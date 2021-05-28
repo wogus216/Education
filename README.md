@@ -1,5 +1,8 @@
 # Education
 수업시간에 공부한 코드 올리기
+하루도 거르지말고 꼭 올리자 
+수업시간에 배우고 잘 모르겠고, 기억안나는 것은 TIL에 올리자
+꾸준함은 모든것을 이긴다. !!!
 
  Java
 * [교육1일(변수,타입,조건문)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-1%EC%9D%BC%EC%B0%A8)
@@ -23,6 +26,8 @@ DB
 * [교육24일(FK삭제,시퀀스,LPAD)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-25%EC%9D%BC%EC%B0%A8)
 * [교육26일(설계)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-26%EC%9D%BC%EC%B0%A8)
 
+
+
 HTML,CSS,Javascript,jQuery
 * [교육27일(HTML)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-27%EC%9D%BC%EC%B0%A8)
 * [교육28일(input Tag,목록데이터,img,파일경로)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-28%EC%9D%BC%EC%B0%A8)
@@ -34,3 +39,13 @@ HTML,CSS,Javascript,jQuery
 * [교육37일(타이밍)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-37%EC%9D%BC%EC%B0%A8)
 * [교육38일(제이쿼리)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-38%EC%9D%BC%EC%B0%A8)
 * [교육42일(제이쿼리)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-42%EC%9D%BC%EC%B0%A8)
+
+JSP
+* [교육43일(JSP,MVC설명)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-43%EC%9D%BC%EC%B0%A8)
+
+Spring
+* [교육45일(설치,동작순서)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-45%EC%9D%BC%EC%B0%A8)
+* [교육46일(form,값전송방식)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-46%EC%9D%BC%EC%B0%A8)
+* [교육47일(Ajax,실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A147%EC%9D%BC%EC%B0%A8)
+* [교육48일(DI,실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-48%EC%9D%BC%EC%B0%A8)
+ 
