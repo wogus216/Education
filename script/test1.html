@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.a {
+	background-color: red;
+}
+</style>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ // body가 다 그려진 이후 함수실행
+							  // window.onload와 동일하나 onload 보다 선실행
+							  // 복수선언가능
+	$("#btn").on("click", test);
+	
+	$("#tb tbody").on("click", "tr", function(){
+		alert($(this).attr("name"));
+		
+		if($(this).attr("class") =="a"){
+			//$(this).attr("class", ""); // ""인경우 attr제거
+			$(this).removeAttr("class"); //attr 삭제시
+		} else{
+			$(this).attr("class", "a");
+		}
+		
+		$("#txt").val($(".a").length + "개");
+	});
+});
+function test(){
+	/* 기존 방식 */
+	//alert(document.getElementById("txt").value);
+	//document.getElementById("txt").value = "바꿨다";
+
+	alert($(".d").val()); // val() : value 취득
+	$(".d").val("바꿨다");  // val(값) : value에 값 할당
+}
+</script>
+</head>
+<body>
+
+<input type="text" id="txt" class="d"/>
+<input type="button" value="눌렀다" id="btn" />
+<br/>
+<table id="tb">
+	<thead>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>나이</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr name="1">
+		<td>1</td>
+		<td>홍길동</td>
+		<td>300살</td>
+	</tr>
+		<tr name="2">
+		<td>2</td>
+		<td>김철수</td>
+		<td>37살</td>
+	</tr>
+	</tbody>
+</table>
+</body>
+</html>

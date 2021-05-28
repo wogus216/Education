@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리2일차 실습2</title>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#all").on("click", function() {
+		if($(this).is(":checked")){ // is: 셀렉터에 해당하는 지
+		$("#wrap input").prop("checked", true); //prop: 상태를 가져오거나 지정
+			
+		} else{
+		$("#wrap input").prop("checked", false); //prop: 상태를 가져오거나 지정
+		
+		}
+		checkTxt();
+	});
+	
+	$("#wrap").on("click", "[type='checkbox']", function() {
+		if($("#wrap [type='checkbox']").length
+				== $("#wrap [type='checkbox']:checked").length) {
+			$("#all").prop("checked", true);
+		} else{
+			$("#all").prop("checked", false);
+		}
+		
+		checkTxt();
+	});
+
+}); //document ready end
+
+function checkTxt(){
+	/* for(var i = 0 ; i < $("#wrap [type='checkbox']:checked").length; i++ ){
+		console.log($("#wrap [type='checkbox']: checked")[i].value);
+	} */
+	
+	$("#txt").val("");
+	
+	$("#wrap [type='checkbox']:checked").each(function(){
+		$("#txt").val($("#txt").val() +"," + $(this).val());
+	});
+
+	
+	$("#txt").val($("#txt").val().substring(1));
+}
+</script>
+</head>
+<body>
+<input type="checkbox" id="all"/><label for="all">전체선택</label>
+<hr/>
+<div id="wrap">
+<input type="checkbox" id="c1" value="사과"/><label for="c1">사과</label>
+<input type="checkbox" id="c2" value="오렌지"/><label for="c2">오렌지</label>
+<input type="checkbox" id="c3" value="배"/><label for="c3">배</label>
+</div>
+<input type="text" id="txt" readonly="readonly"/>
+</body>
+</html>

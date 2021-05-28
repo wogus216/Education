@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#b1").on("click","div", function(){
+		console.log($(this).parent().parent().attr("id"));
+		$(this).parent().parent().children("#b2").html("도달함");
+		$("#t").focus(); //focus:  대상을 포커스 상태로 변경
+	}); //#b1 end
+});//ready end
+</script>
+</head>
+<body>
+<div id="a">
+	<div id="b1">
+		<div id="c1">A</div>
+		<div id="c2">B</div>
+	</div>
+	<div id="b2"></div>
+</div>
+<input type="text" id="t"/>
+</body>
+</html>

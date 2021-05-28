@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 실습2일차 실습1</title>
+<style type="text/css">
+.box{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 200px;
+	border : 20px solid #000000;
+	background-color: rgb(0, 0, 0); 
+}
+
+html, body{
+	margin: 0;
+	height: 100%;
+}
+
+.side{
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 200px;
+	height: 100%;
+	z-index: 100;
+	box-shadow: 1px 0px 1px #000000;
+	background-color: orange;
+}
+</style>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+<!-- 내용을 덮어 씌우기 때문에 밑에 하나 스크립트를 하나 더 만들어야한다. -->
+<script type="text/javascript">
+var r = 0;
+var g = 0;
+var b = 0;
+
+$(document).ready(function(){
+	$(".btn_wrap").on("click", "input[type='button']", function(){
+	switch ($(this).val()) {
+	case "rUp":
+		if(r < 255){
+			r += 5 ;			
+		}
+		break;
+	case "rDown":
+		if( r > 0){
+			r -= 5 ;			
+		}
+		break;
+	case "gUp":
+		if(g < 255){
+			g += 5 ;			
+		}
+		break;
+	case "gDown":
+		if( g > 0){
+			g -= 5 ;			
+		}
+		break;
+	case "bUp":
+		if(b < 255){
+			b += 5 ;			
+		}
+		break;
+	case "bDown":
+		if( b > 0){
+			b -= 5 ;			
+		}
+		break;
+	}
+		$(".box").css("background-color",
+				"rgb("+ r + ","+ g + ","+ b + ")");	
+		console.log($(".box").css("background-color"));
+	});	
+	
+	$(".btn_wrap2").on("click", "input[type='button']", function(){
+		switch($(this).val()){
+		case "show" : 
+			//보통 나타날대는 show 감출때는 fadeout 물론 상황에 따라 다름
+			//$(".box").show();
+			//$(".box").fadeIn("fast");
+			$(".box").slideDown(300);
+			break;
+		case "hide" :
+			//$(".box").hide();
+			//$(".box").fadeOut(300);
+			$(".box").slideUp(300);
+			break;
+		case "big" :
+			//console.log($(".box").width()); //패딩없음
+			//console.log($(".box").innerwidth()); //패딩포함
+			//$(".box").width($(".box").width() + 50);
+			//$(".box").height($(".box").height() + 50);
+			$(".box").animate({
+				width: "+=50px",
+				height: "+=50px",
+				opacity: "1.0"
+			}, 500);
+			break;
+		case "small" :
+			//$(".box").width($(".box").width() - 50);
+			//$(".box").height($(".box").height() - 50);
+			$(".box").animate({
+				width: "-=50px",
+				height: "-=50px",
+				opacity: "0.1"
+			}, 500);
+			break;
+		case "ani":
+			$(".box").slideUp("slow").delay(1000).slideDown("slow", function() {
+				alert("ani end!");
+			});
+			break;
+		case "aniStop":
+			$(".box").stop(); //현재 실행 중인 Animate에 대하여 처리
+			$(".box").stop(); //딜레이에 대한 스탑,
+			$(".box").stop(); // slideDown에 대한 스탑
+			break;
+		case "side":
+			$(".side").animate({
+				opacity: "1.0", 
+				left:"0px"
+			},300);
+			break;
+		}
+	});
+	$(".side").on("click", function(){
+		$(".side").animate({
+			opacity: "0.0",
+			left: "-200px"
+		},300);
+	});
+});
+</script>
+</head>
+<body>
+<div class="btn_wrap">
+	<input type="button" value="rUp"/>
+	<input type="button" value="rDown"/>
+	<input type="button" value="gUp"/>
+	<input type="button" value="gDown"/>
+	<input type="button" value="bUp"/>
+	<input type="button" value="bDown"/>
+</div>
+<div class="btn_wrap2">
+	<input type="button" value="show"/>
+	<input type="button" value="hide"/>
+	<input type="button" value="big"/>
+	<input type="button" value="small"/>
+	<input type="button" value="ani"/>
+	<input type="button" value="aniStop"/>
+	<input type="button" value="side"/>
+</div>
+<div class="box"> </div>
+<div class="side">HelloWorld</div>
+</body>
+</html>
+
+
+

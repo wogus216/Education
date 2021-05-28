@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var no = 0;
+
+$(document).ready(function(){
+	$("#btn1").on("click",function(){
+		var html = "<div id=\"d" + no + "\">test" + no + "</div>";
+		no++;
+		$(".wrap").append(html); //html 내용을 가징고온다
+	}); //btn1 click end
+	
+	
+	$("#btn2").on("click", function(){
+		var html = "<div id=\"d"+ no + "\">test" + no + "</div>";
+		no++;
+		$(".wrap").prepend(html); //앞에서 부터 추가
+	}); //btn2 click end
+	
+	$("#btn3").on("click",function(){
+		no = 0;
+		
+		$(".wrap").empty();
+	}); //btn3 click end
+	
+	
+	$("#btn4").on("click",function(){
+		$("body").html($("body").html());
+		
+		$("#btn1").off("click");
+		
+		$("#btn1").on("click",function() {
+			var html = "<div id=\"d"+ no +"\">test"+ no + "</div>";
+			no++;
+			$(".wrap").append(html);
+		});//btn1 click end
+	}); //btn4 click end
+
+	$(".wrap").on("click", "div", function(){
+		console.log($(this).attr("id"));
+	}).on("dblclick","div",function(){
+			$(this).remove();
+	});
+
+}); //ready end
+</script>
+</head>
+<body>
+<input type="button" value="뒤" id="btn1"/>
+<input type="button" value="앞" id="btn2"/>
+<input type="button" value="리셋" id="btn3"/>
+<input type="button" value="천지창조" id="btn4"/>
+<div class="wrap"></div>
+</body>
+</html>
