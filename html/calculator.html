@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>calculator</title>
+<script type="text/javascript">
+function num(no){
+	var t = document.getElementById("txt1");	
+	
+	if(t.value == "0"){
+		
+		t.value = no;
+	} else{
+		
+		
+		t.value +=no;
+		
+	}
+}
+
+function cal(no){
+	var t = document.getElementById("txt1");	//입력 값
+	var r = document.getElementById("txt2");	//결과값
+	var b = document.getElementById("txt3");	//부호값
+
+	
+		
+		if(b.value =="0"){
+			
+			r.value = t.value;
+			b.value = no;
+			t.value = 0;
+			
+		}else{
+			
+		switch (b.value){
+		case '+':
+				r.value = (r.value*1) + (t.value*1);
+				b.value =no ;
+				t.value = 0;
+			break;
+			
+		case '-':
+			r.value = (r.value*1) - (t.value*1);
+			b.value =no ;
+			t.value = 0;
+		break;
+			
+		case '*':
+			r.value = (r.value*1) * (t.value*1);
+			b.value =no ;
+			t.value = 0;
+		break;
+		case '/':
+			r.value = (r.value*1) / (t.value*1);
+			b.value =no ;
+			t.value = 0;
+		break;
+			}
+		}
+		
+}
+	function reset(no){
+		var t = document.getElementById("txt1");	//입력 값
+		var r = document.getElementById("txt2");	//결과값
+		var b = document.getElementById("txt3");	//부호값
+	
+		if(b.value !="0"){
+			t.value = 0;
+			r.value = 0;
+			b.value = 0;
+		}
+	}
+
+	function final(no){
+		var t = document.getElementById("txt1");	//입력 값
+		var r = document.getElementById("txt2");	//결과값
+		var b = document.getElementById("txt3");	//부호값
+		
+
+		if(r.value =="0" && t.value =="0" && b.value =="0"){
+			
+	
+			
+		}else{
+			
+			switch (b.value){
+			case '+':
+				t.value+=no;
+				r.value = (r.value*1) + (t.value*1);
+			break;
+				
+			case '-':
+				r.value = (r.value*1) - (t.value*1);
+			break;
+				
+			case '*':
+				r.value = (r.value*1) * (t.value*1);
+			break;
+			
+			case '/':
+				r.value = (r.value*1) / (t.value*1);
+			break;
+				}
+			}
+		
+	}
+</script>
+</head>
+<body>
+<span>입력값</span><input type="text" id="txt1" value="0" readonly="readonly"/><br/>
+<span>결과값</span><input type="text" id="txt2" value="0" readonly="readonly"/><br/>
+<span>부호값</span><input type="text" id="txt3" value="0" readonly="readonly"/><br/>
+<br/>
+<input type="button" value="0" onclick="num(0);" />
+<input type="button" value="1" onclick="num(1);" />
+<input type="button" value="2" onclick="num(2);" />
+<input type="button" value="3" onclick="num(3);" />
+<br/>
+<input type="button" value="4" onclick="num(4);" />
+<input type="button" value="5" onclick="num(5);" />
+<input type="button" value="6" onclick="num(6);" />
+<input type="button" value="7" onclick="num(7);" />
+<br/>
+<input type="button" value="8" onclick="num(8);" />
+<input type="button" value="9" onclick="num(9);" />
+<input type="button" value="+" onclick="cal('+');" />
+<input type="button" value="-" onclick="cal('-');" />
+<br/>
+<input type="button" value="*" onclick="cal('*');" />
+<input type="button" value="/" onclick="cal('/');" />
+<input type="button" value="c" onclick="reset('c');" />
+<input type="button" value="=" onclick="final('f');" />
+
+</body>
+</html>

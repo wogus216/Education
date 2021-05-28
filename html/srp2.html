@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보</title>
+<style type="text/css">
+#img1{
+	height: 250px;
+}
+.s{
+	margin-left: 45px;
+	margin-bottom: 10px;
+}
+</style>
+<script type="text/javascript">
+var imgs = ["가위.png","바위.png","보.png"];
+var now = 0;
+var vcnt = 0;
+var dcnt = 0;
+var lcnt = 0;
+var interval = null
+
+function start(){
+	if(interval == null){
+		interval = setInterval(changeImg,1000);
+	}
+	wrap.HTML="";
+	
+}
+function changeImg(){
+	now++;
+	
+	if(now == imgs.length){
+		now = 0;
+	}
+	document.getElementById("img1").src =imgs[now];
+}
+
+function bdisabled(){
+	
+	for(var i = 1; i <= 3; i++){
+		document.getElementById("b"+i).disabled = false;
+	}
+}
+
+function b(no){
+	clearInterval(interval);
+	interval = null;
+	var b1 =  document.getElementById("b1");
+	var b2 =  document.getElementById("b2");
+	var b3 =  document.getElementById("b3");
+	
+	b1.disabled = false;
+	switch(no){
+	
+		case 1: //가위
+			switch(imgs[now]){
+			case "가위.png":
+				console.log("무입니다.")
+				
+				dcnt++;
+				break;
+			case "바위.png":
+				console.log("패입니다.")
+			
+				lcnt++;
+				break;
+			case "보.png":
+				console.log("승입니다.")
+				
+				vcnt++;
+				
+				break;
+			}
+			
+			break;
+			
+	
+		case 2: //바위
+			switch(imgs[now]){
+			case "가위.png":
+				console.log("승입니다.")
+				
+				vcnt++;
+				break;
+			case "바위.png":
+				console.log("무입니다.")
+			
+				dcnt++;
+				break;
+			case "보.png":
+				console.log("패입니다.")
+				
+				lcnt++;
+				break;
+			}
+		
+			break;	
+			
+		case 3: //보
+			switch(imgs[now]){
+			case "가위.png":
+				console.log("패입니다.")
+				
+				lcnt++;
+				break;
+			case "바위.png":
+				console.log("승입니다.")
+			
+				vcnt++;
+				break;
+			case "보.png":
+				console.log("무입니다.")
+				
+				dcnt++;
+				break;
+			}
+		}
+		
+			console.log(vcnt);
+			console.log(dcnt);
+			console.log(lcnt);
+			var html = vcnt+"승 "+dcnt+"무 "+lcnt+"패 ";
+			wrap.innerHTML = html;
+			
+	}
+	
+</script>
+</head>
+<body>
+<span>결과</span> 
+<div id="wrap">
+<div id="d0" onclick="d(this)"></div>
+</div>
+<br/>
+<img alt="이미지" src="가위.png" id="img1"/>
+<br/>
+<input type="button" id="start" class="s" value="시작" onclick="start()"/>
+<br/>
+<input type="button" id="b1" value="가위" onclick="click(this)"/>
+<input type="button" id="b2" value="바위" onclick="b(2)"/>
+<input type="button" id="b3" value="보" onclick="b(3)"/>
+
+</body>
+</html>

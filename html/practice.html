@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숫자야구 시연이 버전</title>
+<script type="text/javascript">
+var count = 0;
+var result = 
+	'<table border = "1" style="text-align:center;border-collapse:collapse">'';
+var randomNum = [];
+var inputNUm = [];
+var sChk = [false,false,false];
+
+	window.onload= function(){
+		makeNum(function() {})
+	};
+	
+	function makeNum(func){
+		func.call();
+		count = 0;
+		result = '<table border="1" style="text-align:center;border-collapse:collapse">';
+		randomNum = [];
+	    inputNum = [];
+	    sChk = [false,false,false];
+	    var reset = document.getElementById("count");
+	    reset.innerHTML = 9;
+	    document.getElementById("num1").value = "";
+	    document.getElementById("num2").value = "";
+	    document.getElementById("num3").value = "";
+	    for(var i = 0; i <3 ; i++){}
+	    	randomNum[i] = Math.floor(Math.random()* 9)+1;
+	    	for(var j= 0; j < i; i++){
+	    		  if(randomNum[i] == randomNum[j]) {
+	                  i--;
+	               }
+	    	}
+	}
+	result += "<tr><th>컴퓨터</th><th style=''"
+</script>
+</head>
+<body>
+	<div id="wrap">
+	숫자 입력:
+	 	<input type = "text" id="num1" maxlength="1" style="width: 50px;"/>
+	 	<input type = "text" id="num2" maxlength="1" style="width: 50px;"/>
+	 	<input type = "text" id="num3" maxlength="1" style="width: 50px;"/>
+	 	<input type = "button" value = "게임시작" onclick = "sendNumber();	"/>
+	남은 기회 : <span id = "count">9</span>회<br/>
+	스트라이크 : <span id = "s"></span>
+	볼:		<span id="b"></span>
+	아웃:		<span id="o"></span>
+	</div>
+	<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+console.log(Math.round(3.141529));
+console.log(Math.floor(3.141529));
+console.log(Math.ceil(3.141529));
+console.log(Math.abs(-123));
+console.log(Math.floor(Math.random()*10)+0); //0.0 ~~~~0.99999999
+
+/* 중요하다 꼭 기억 할 것 */
+var str = "Hello World!!\"Hi\"";
+console.log(str);
+
+str = "Hello World";
+console.log(str.length);
+console.log(str.indexOf("l"));
+console.log(str.indexOf("l", 3));
+console.log(str.indexOf("x")); //찾을 게없을때  -1
+console.log(str.lastIndexOf("l"));
+console.log(str.substring(0,1)); //첫번 째 숫자 이상, 두번째 숫자 미만
+console.log(str.replace("l","k"));
+
+/* 정규식 사용 시 replaceall하고싶을 때
+ /대상문자/옵션 
+ 의 형태를 사용. 옵션  - i : 대소문자 구분 없음, g : 모든대상 */
+console.log(str.replace(/l/ig,"k"));
+//정규식은 예약어 같은 것
+console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+//trim : 앞  뒤 공백제거
+str = "             Hello world!!        ";
+console.log("["+str.trim()+"]");
+
+str = "Hello World";
+console.log(str.charAt(0));
+console.log(str[0]);
+
+//구분자 기준으로 나눈다.
+var arr = "apple,banana,mango".split(",");
+console.log(arr);
+
+var d = new Date();
+
+console.log(d);
+console.log(d.toString());
+console.log(d.getFullYear()); //연도
+console.log(d.getMonth()+1); // 인덱스 기반 월
+console.log(d.getDate()); // 일
+console.log(d.getHours()); // 시
+console.log(d.getMinutes()); // 분
+console.log(d.getSeconds()); // 초
+console.log(d.getMilliseconds()); // 밀리초
+console.log(d.getDay()); // 주의 몇번째 날인지
+
+
+
+</script>
+<head>
+<body>
+
+</body>
+</html>

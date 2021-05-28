@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test06</title>
+<style type="text/css">
+body{
+	font-size : 0pt;
+}
+
+.a {
+/* font-family : 글꼴을 나타냄, 여러개를 지정가능, 앞에 부터 있는 것을 적용
+	일반적으로 폰트 하나 사용*/
+	font-family: '돋움', '고딕';
+	/* font-style : 기울임. 강조.*/
+	font-style: italic;
+	/*font-size : 글자크기.pt :출력기준,px: 화면 기준,em(16px = 1em), vw(1vw = 1%)  */
+	font-size : 14pt;
+	/* font-weight : 굵기. normal, bold, 100(얇다) ~ 900(두껍다) */
+	font-weight : 900;
+	border-bottom-width : 2px;
+	border-top-width : 1px;
+	border-left-width : 1px;
+	border-right-width : 2px;
+	/* solid : 실선, double : 겹선, dotted : 점, dashed : 점선  */
+	border-style : solid;
+	border-color : #000000;
+	border-radius : 3px;
+	/* width, height : 내용의 너비와 높이를 지정한다.
+						%로 크기 적용 시 부모의 크기에 따라 유동으로 지정.
+						단, 부모의 크기가 없을 경우 0px로 처리함.
+	 */
+	width : calc(25% - 23px);
+	/* min-가로,세로 : 최소크기, 비율로 크기지정시 동작 */
+	/* max-가로,세로 : 최대크기, 비율로 크기지정시 동작 */
+	min-width : 100px;
+	height: 100px;
+	display : inline-block;
+	vertical-align : top;
+	margin: 10px 10px;
+	padding: 10px 10px 10px 10px; 
+}
+</style>
+</head>
+<body>
+<div class="a">Hello안녕</div>
+<div class="a"></div>
+<div class="a"></div>
+<div class="a"></div>
+<div class="a"></div>
+<div class="a"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>playball</title>
+
+<script type="text/javascript">
+var arr= [-1,-1,-1];
+/* 중복제거 */
+function s(){
+for(var i = 0; i<arr.length; i++){
+	arr[i] = Math.floor(Math.random()*9)+1;
+}
+
+
+for(var j = 0; j< arr.length-1; j++){
+	for(var k = j+1; k < arr.length; k++){
+		if(arr[j]==arr[k]){
+			arr[k] = Math.floor(Math.random()*9)+1;
+			k--;
+		}
+		
+	}
+}
+console.log(arr.toString());
+}
+
+
+
+/* 숫자입력 */
+function num(no){
+	var num = document.getElementById("txt1");
+	
+		
+		if(num.value== "0"){
+			num.value = no;
+		} else{
+			if(num.value.length < 3){
+			num.value +=no;
+			}
+			
+		}
+	
+
+console.log(num.value.toString());
+}
+var no = 0;
+var scnt =0;
+var bcnt =0;
+var ocnt =0;
+function check(){
+	var num = document.getElementById("txt1");
+	var c = document.getElementById("check");
+	var wrap = document.getElementById("wrap");
+	var r = document.getElementById("record");
+		no++;
+	if(no <10 && scnt <3){
+		
+		for(var i = 0; i < arr.length; i++){
+				for(var j = 0; j < arr.length; j++){
+					
+			if(num.value[i]==arr[j]){
+					if(i==j){
+					scnt++;
+					} else{
+						bcnt++;
+					}
+				} 
+			}
+		}
+		
+		ocnt=(3-(scnt+bcnt));
+		
+		var html="<div id=\"d"+ no +"\"onclick=\"d(this)\">"
+		+no+"회차 "+num.value+": "+scnt+"S "+bcnt+"B "+ocnt+"O "+"</div>";
+		if(scnt==3){
+			alert("정답입니다.");
+			arr=[-1,-1,-1];
+			console.log(arr.toString());
+		}
+		wrap.innerHTML += html;
+		num.value=0;
+		bcnt=0;
+		ocnt=0;
+		scnt=0;
+	}
+}
+function d(obj){
+	var a = document.getElementById(obj.id);
+	a.remove(); //객체 삭제
+}
+function f(){
+	no=0;
+	
+	
+	
+}
+</script>
+</head>
+<body>
+<span>숫자알림</span><input type="text" id="txt1" value="0" placeholder="숫자3개를 입력해주세요"
+						maxlength="3"/><br/>
+<input type="button" id="check" value="확인" onclick="check();">
+<input type="button" id="start" value="시작" onclick="s();" />
+<input type="button" id="finish" value="종료" onclick="f();" />
+
+<br/>
+<input type="button" value="1" onclick="num(1);" />
+<input type="button" value="2" onclick="num(2);" />
+<input type="button" value="3" onclick="num(3);" />
+<br/>
+<input type="button" value="4" onclick="num(4);" />
+<input type="button" value="5" onclick="num(5);" />
+<input type="button" value="6" onclick="num(6);" />
+<br/>
+<input type="button" value="7" onclick="num(7);" />
+<input type="button" value="8" onclick="num(8);" />
+<input type="button" value="9" onclick="num(9);" />
+<br/>
+<div id="wrap">
+<div id="d0" onclick="d(this)"></div>
+<span>기록</span><div class="record" value="0"></div>
+</div>
+
+</body>
+</html>

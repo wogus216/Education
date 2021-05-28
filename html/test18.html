@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var timeout = setTimeout(function() {
+	alert("f")
+},3000);
+
+setTimeout(test,3000);
+
+function test(){
+	console.log("test");
+}	
+
+function stopT() {
+	clearTimeout(timeout);
+}
+
+setInterval(function(t) {
+	var d = new Date();
+	var now = t + ">"+d.getHours() + ":"+ d.getMinutes()+":"+d.getSeconds();
+	
+	document.getElementById("a").innerHTML = now + "<br/>";
+	document.getElementById("a").innerHTML += t + ">"+ now;
+	
+},1000, "abc");
+</script>
+</head>
+<body>
+<input type="button" value="살고싶으면 3초안에 누르시오." onclick="stopT();"/>
+<div id="a"></div>
+</body>
+</html>

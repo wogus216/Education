@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test12</title>
+<script type="text/javascript">
+var n =0;
+function num(no){
+	var t = document.getElementById("txt1");	
+	
+	if(t.value == "0"){
+		
+		t.value = no;
+	} else{
+		
+		
+		t.value +=no;
+		var n=t.value;
+	}
+	console.log(isNaN(t.value));
+	console.log(n);
+}
+function plus(buho){
+	var r=document.getElementById("txt2")
+	
+	if(r.value == " "){
+		
+		r.value = n;
+		console.log(r.value);
+	} else{
+		
+		
+	}
+	
+}
+
+</script>
+</head>
+<body>
+<input type="text" id="txt1" value=" " readonly="readonly"/><br/><br/>
+<span>결과 값</span><input type="text" id="txt2" value="0" readonly="readonly"/>
+<br/>
+<input type="button" value="0" onclick="num(0);" />
+<input type="button" value="1" onclick="num(1);" />
+<input type="button" value="2" onclick="num(2);" />
+<br/>
+<input type="button" value="3" onclick="num(3);" />
+<input type="button" value="4" onclick="num(4);" />
+<input type="button" value="5" onclick="num(5);" />
+<br/>
+<input type="button" value="6" onclick="num(6);" />
+<input type="button" value="7" onclick="num(7);" />
+<input type="button" value="8" onclick="num(8);" />
+<br/>
+<input type="button" value="9" onclick="num(9);" />
+<input type="button" value="C" onclick="" />
+<input type="button" value="/" onclick="" />
+<br/>
+<input type="button" value="*" onclick=""  />
+<input type="button" value="-" onclick=""  />
+<input type="button" value="+" onclick="plus" />
+<input type="button" value="=" onclick="" />
+
+</body>
+</html>

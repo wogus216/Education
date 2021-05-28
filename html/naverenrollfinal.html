@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>enroll</title>
+<style type="text/css">
+body{
+	font-family: 'Dotum','돋움';
+	font-size: 12px;
+}
+.bg{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: #000000;
+	z-index: 200;
+	opacity: 0.7; /* 0.0(투명) ~ 1.0(불투명) */
+}
+.popup {
+	margin: 30px auto;
+	display: block;
+	width: 767.986px;
+	height: 100%;
+	background-color: white;
+	overflow: scroll;
+	
+	
+}
+.pbrand{
+	width: 767.986;
+	height: 43.993;
+}
+.brand{
+	margin: 10px auto;
+	display: block;
+	background-color: white;
+	width: 240px;
+	height: 44px;
+    background-image: url(https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 230px auto;
+	font-size: 0;
+	
+}
+.rowgroup{
+	
+	width: 459.984px;
+	height: 800px;
+	background-color: white;
+	margin: 0px auto;
+}
+.wid, .wpassword, .wpwre,.wname,.wbirth,.wgender,.wconfirmmail,.wphonenumber{
+		display: block;
+		width: 100%;
+		height: 18px;
+		font-weight: bold;
+		font-size: 15px;
+		margin: 19px 0 8px;
+}
+.idinput, .passwordinput,.passwordinputre,.nameinput,.genderinput,.confirmmailinput
+,.phonenumberinput, .certificationNumberinput,.joinbutton{
+	display: block;
+	height: 49px;
+	background-color: white;
+	border: solid 2px #dadada;
+}
+.birthinput{
+	display: block;
+	height: 49px;
+	background-color: white;
+	border: solid 0px #dadada;	
+}
+
+.id, .password,.wname,.passwordre{
+	border: solid 0px #dadada;
+	cursor: pointer;
+	display: inline-block;
+}
+.id,.password,.passwordre{
+	width: 354px;
+	height: 47px;
+	
+}
+.nemail{
+	width: 93px;
+	height: 49px;
+    font-size: 15px;
+    line-height: 50px;
+    color: #8e8e8e;
+}
+.error,.errorpw{
+	margin-top: 10px;
+	width: 460px;
+	height: 13.600px;
+	color: red;
+}
+.passre{
+	width: 93px;
+	height: 49px;
+	position: relative;
+}
+.passred{
+	color: red;
+}
+.inputyy,.inputmm,.inputdd{
+	display: inline-block;
+	width: 30%;
+	height: 49px;
+	border: solid 1px #dadada;
+	background-color: white;
+	vertical-align: top;
+	margin: 0px auto;
+}
+#yy, #mm, #dd{
+	width: 91px;
+	height: 27px;
+	padding-right: 25px;
+	margin: 10px 10px;
+	border: solid 0px #dadada;
+	size: 12pt;
+}
+.mmsel,.gendersel.numbersel{
+	font-size: 15px;
+}
+#gender,#number{
+	 width: 437px;
+	 height: 49px;
+	 line-height: 18px;
+	 border: solid 0px #dadada;
+	 
+}
+.choice{
+	font-size: 12px;
+	font-weight: 400;
+	color: #8e8e8e;
+	
+}
+#email{
+	width: 437px;
+	height: 27px;
+	border: solid 0px #dadada;
+	margin: 10px 10px;
+}
+.numberinput{
+	display: inline-block;
+	width:  458px;	
+	height: 49px;
+	background-color: white;
+	border: solid 1px #dadada;
+	margin-top: 10px;
+}
+#phoneNo{
+	
+	 width: 300px;
+	 height: 29px;
+	 line-height: 18px;
+	 border: solid 0px #dadada;
+	 margin: 10px 10px;
+}
+.phoneNo{
+	display: inline-block;	
+}
+.certificationNumber{
+	display: inline-block;
+	width: 119px;
+	height: 50px;
+	background-color: #03c75a;
+	vertical-align: top;
+	padding-left: 10px;
+	
+	
+	
+}
+.certificationNumberget{
+	font-size: 15px;
+	cursor: pointer;
+	color: #fff;
+	display: inline-block;
+	margin-top: 17px;
+	margin-left: 5px;
+	
+}
+.certificationNumberinput{
+	margin-top: 10px;
+	
+}
+.getconfirm{
+	width: 430px;
+	height: 29px;
+	border: solid 0px #dadada;
+	margin-top: 10px;
+	
+}
+
+.joinbutton{
+	
+	margin-top: 30px;
+	background-color: #03c75a;
+}
+
+.lastbutton{
+	display: inline-block;
+	margin-left: 40%;
+	font-size: 30px;
+	color: white;
+}
+</style>
+</head>
+<body>
+<div class="bg">
+<div class="popup">
+		<div class="pbrand">
+			<div class="brand">NAVER</div>
+		</div>
+		<div class="rowgroup">
+		
+			<div class="wid">아이디</div>
+			<div class="idinput">
+				<input class="id" type="text" maxlength="20"> <span
+					class="nemail">@naver.com</span>
+	  		</div>
+			<div class="error">필수 정보입니다.</div>
+			
+			<div class="wpassword">비밀번호</div>
+			<div class="passwordinput">
+				<input class="password" type="password" maxlength="20"> <span
+					class="passred">사용불가</span>
+			</div>
+			
+			<div class="errorpw">8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</div>
+			<div class="wpwre">비밀번호재확인</div>
+			
+			<div class="passwordinputre">
+				<input class="passwordre" type="password" maxlength="20">
+				 <span class="passre"></span>
+			</div>
+				<div class="wname">이름</div>
+				<div class="nameinput">
+					<input class="id" type="text" maxlength="20">
+				</div>
+				
+			<div class="wbirth">생년월일</div>
+				<div class="birthinput">
+				<span class="inputyy">
+					<input type="text" id="yy" placeholder="년(4자)" maxlength="4">
+				</span>
+				<span class="inputmm" >
+					<select id="mm" class="mmsel">
+						<option value>월</option>
+						<option value="01">1</option>
+						<option value="02">2</option>
+						<option value="03">3</option>
+						<option value="04">4</option>
+						<option value="05">5</option>
+						<option value="06">6</option>
+						<option value="07">7</option>
+						<option value="08">8</option>
+						<option value="09">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+				</span>
+				<span class="inputdd">
+					<input type="text" id="dd" placeholder="일" maxlength="2">
+				</span>
+				</div>
+				
+				<div class="wgender">성별</div>
+				<div class="genderinput">
+					<select id="gender" class="gendersel">
+						<option value>성별</option>
+						<option value="01">남자</option>
+						<option value="02">여자</option>
+						<option value="03">선택안함</option>
+					</select>
+				</div>
+				
+				<h3 class="wconfirmmail">
+					<label for="email">본인 확인 이메일
+					<span class="choice">(선택)</span>
+					</label>
+				</h3>
+				<div class="confirmmailinput">
+					<input type="text" id="email" placeholder="선택입력" maxlength="100">
+				</div>
+				<div class="wphonenumber">휴대전화</div>
+				<div class="phonenumberinput">
+						<select id="number" class="numbersel">
+						<option value>대한민국 +82</option>
+							<option value="01">가나 +233 </option>
+							<option value="02">미국령북마리아나제도 +1 670</option>
+							<option value="03">프랑스 +33</option>
+						</select>
+						
+						<div class="numberinput">	
+							<input type="tel" id="phoneNo" class="phoneNo" 
+							placeholder="전화번호입력" maxlength="16">
+							<div class="certificationNumber">
+								<span class="certificationNumberget">인증번호 받기</span>
+							</div>
+						</div>	
+						
+						<div class="certificationNumberinput">
+							<input type="text" class="getconfirm" placeholder="인증번호를 입력하세요" >
+						</div>
+						
+						<div class="joinbutton">
+							<span class="lastbutton">가입하기</span>
+					   </div>
+				</div>
+			</div>
+	</div>
+</div>	
+</body>
+</html>

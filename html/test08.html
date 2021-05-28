@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test08</title>
+<style type="text/css">
+.a {
+	/* 인라인 블록도 설정 가능 */
+	text-align: left;
+	background-color:red;
+	height: 100px;
+	line-height: 50px;
+	/* 들여쓰기*/
+	text-indent: 50px;
+	/* 글자자간, 사용은 안한다. */
+	letter-spacing: -2px;
+	/* 단어간 띄어쓰기 그러나, 사용안한다. */
+	word-spacing: -2px;
+}
+.b{
+	text-align: center;
+	background-color: orange;
+	height: 100px;
+	
+}
+.b1{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.b2{
+	display: table-cell;
+	vertical-align: middle;
+}
+.c{
+	text-align: right;
+}
+.d{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	border: 1px solid #000000;
+	/* white-space: 여백 */
+	white-space: nowrap;
+	overflow: hidden;
+	/* ...좀 나오게 하는 것 다만, 한줄 그리고 텍스트가 넘쳤을 때 */
+	text-overflow: ellipsis;
+			/* 	가로,세로,블러,스프레드 색상 */
+	box-shadow: 0px 0px 4px 10px lime;
+	
+}
+
+.e{
+	font-size: 50px;
+	text-shadow: 0px 0px 10px lime;
+	color: white;
+	height: 300px;
+	background-image: url('moun.png');
+					/*가로     세로  */
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+	background-position: center;
+	
+}
+
+.f{
+	height: 100px;
+	background-image: linear-gradient(to bottom right, green, blue, purple);
+	
+}
+</style>
+</head>
+<body>
+<div class="a">Hello 안녕<br/>Hi</div>
+<div class="b">
+	<div class="b1">
+		<div class="b2">
+				Hello<br/>Hi		
+		</div>
+	</div>
+</div>
+<div class="c">Hello</div>
+<div class="d">가나다라마바사아자차카타파하</div>
+<div class="e">Hungry!!</div>
+<div class="f"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test05</title>
+<style type="text/css">
+#d1{
+	background-color: red;
+	}
+.d2 {
+	background-color: green;
+	}
+[name="d3"] {
+	background-color: blue;
+}
+div{
+	color : white;
+}
+#d1, .d2{
+	color : purple;
+}
+.d2 div{
+	color: white;
+}
+
+.d2 > div { 
+	color: aqua;
+}
+
+span:hover {
+	background-color: #AA5533;
+}
+</style>
+</head>
+<body>
+
+<div id="d1">a</div>
+<div class="d2">b1-1
+	<div>b2-1
+		<div>b3-1</div>
+		<div>b3-2</div>
+	</div>
+	<div>b2-2</div>
+</div>
+<div name="d3">c</div>
+
+<span>a</span>
+<span>b</span>
+<span >c</span>
+</body>
+</html>

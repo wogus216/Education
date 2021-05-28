@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test13</title>
+<style type="text/css">
+#box, #box2{
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 200px;
+	border : 20px solid rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0); 
+}
+</style>
+<script type="text/javascript">
+var r  = 0;
+var g  = 0;
+var b  = 0;
+
+
+function boxColor(btn){
+	var box = document.getElementById("box");
+		
+	switch (btn.value) {
+	case "rUp":
+		if(r < 255){
+			r += 5 ;			
+		}
+		break;
+	case "rDown":
+		if( r > 0){
+			r -= 5 ;			
+		}
+		break;
+	case "gUp":
+		if(g < 255){
+			g += 5 ;			
+		}
+		break;
+	case "gDown":
+		if( g > 0){
+			g -= 5 ;			
+		}
+		break;
+	case "bUp":
+		if(b < 255){
+			b += 5 ;			
+		}
+		break;
+	case "bDown":
+		if( b > 0){
+			b -= 5 ;			
+		}
+		break;
+	case "allUp":
+		if(r < 255 || g < 255 || b < 255){
+			r += 5 ;			
+			g += 5 ;			
+			b += 5 ;			
+		}
+		break;
+	case "allDown":
+		if(r > 0 || g > 0 || b > 0){
+			r -= 5 ;			
+			g -= 5 ;			
+			b -= 5 ;			
+		}
+		break;
+		
+		}
+
+	/* 스타일에 넣은 rgb안에 있는 0값을 각 r,g,b로 선언 */
+	box.style.backgroundColor = "rgb("+ r + ","+ g + ","+ b + ")";
+	}
+function tog(){
+	var box = document.getElementById("box");
+		console.log(box.style.display);
+		
+	if(box.style.display == "none"){//display : none => 영역제거
+			box.style.display = ""; //""값을 안줄 경우 해당 style속성이 제거됨
+		}else{
+			box.style.display = "none";
+		}
+		
+	}
+function tog2(){
+	var box = document.getElementById("box");
+		console.log(box.style.display);
+		
+	if(box.style.visibility == "hidden"){//visibility : hidden => 감추기
+			box.style.visibility = ""; //""값을 안줄 경우 해당 style속성이 제거됨
+		}else{
+			box.style.visibility = "hidden";
+		}
+		
+	}
+	
+function bigger(){
+	var box2 = document.getElementById("box2");
+	
+	console.log(box2.clientWidth); //clientWidth : css에 적용된 크기를 가져옴
+	
+	
+	
+	box2.style.width = box2.clientWidth * 2 + "px";
+	box2.style.height = box2.clientHeight * 2 + "px";
+}
+	
+function smaller(){
+	var box2 = document.getElementById("box2");
+	
+	console.log(box2.clientWidth); //clientWidth : css에 적용된 크기를 가져옴
+	
+	
+	
+	box2.style.width = box2.clientWidth / 2 + "px";
+	box2.style.height = box2.clientHeight / 2 + "px";
+}		
+	
+</script>
+</head>
+<body>
+<div id="box"></div> <div id="box2"></div>
+<br/>
+<input type="button" value="rUp" onclick="boxColor(this);"/>
+<input type="button" value="rDown" onclick="boxColor(this);"/>
+<input type="button" value="gUp" onclick="boxColor(this);"/>
+<input type="button" value="gDown" onclick="boxColor(this);"/>
+<input type="button" value="bUp" onclick="boxColor(this);"/>
+<input type="button" value="bDown" onclick="boxColor(this);"/>
+<input type="button" value="allUp" onclick="boxColor(this);"/>
+<input type="button" value="allDown" onclick="boxColor(this);"/>
+<br/>
+<input type="button" value="버튼" onclick="tog();"/>
+<input type="button" value="버튼2" onclick="tog2();"/>
+<input type="button" value="커져라!" onclick="bigger();"/>
+<input type="button" value="작아져라!" onclick="smaller();"/>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var a = 10;
+
+console.log(a);
+
+if( a > 0){
+	console.log("a는 0 보다 크다.");
+} else{
+	console.log("a는 0보다 작거나 같다.");ㅣ	
+}
+
+/* 선언부. 건들지 말것*/
+a = 5;
+var b = 7;
+var c = 3;
+var tmp = 0;
+
+/* 오름차순 정렬 구현 */
+
+if(a>b){
+	tmp=a;
+	a=b;
+	b=tmp;
+}
+if(a>c){
+	tmp=a;
+	a=c;
+	c=tmp;
+}
+if(b>c){
+	tmp=b;
+	b=c;
+	c=tmp;
+}
+
+/* 출력부, 건들지 말것*/
+console.log(a);
+console.log(b);
+console.log(c);
+
+/* 2단출력 */
+for(var i = 1 ; i < 10; i++){
+	console.log("2*"+i+"="+2*i);
+}
+/* 선언부, 건들지 말것 */
+var arr=[5,7,3];
+
+/* 내림차순 */
+for(var i = 0; i < arr.length-1; i++){
+	for(var j = i+1; j < arr.length; j++){
+		if(arr[i]<arr[j]){
+			tmp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=tmp;
+		}
+	}
+}
+
+/* 출력부, 건들지 말것 */
+for(var i = 0; i < arr.length;	i++){
+	console.log(arr[i]);
+}
+
+/* 꺼꾸로 해보자 */
+for(var i = arr.length-1; i > 0 ; i--){
+	for(var j = i-1; j >=0 ; j--){
+		if(arr[i]>arr[j]){
+			tmp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=tmp;
+		}
+	}
+}
+
+/* 꺼꾸로 출력버전 */
+for(var i = 0; i < arr.length;	i++){
+	console.log(arr[i]);
+}
+
+function test(){
+	alert("곧 점심시간이다~~");
+}
+var w;
+function test2(){
+	//location 주소창
+	//href : 주소
+	//현재창에 띄울경우
+	//location.href = "http://google.co.kr";
+	// 새창을 띄울경우
+	 w = window.open("http://google.co.kr","_blank");
+}
+
+function test3(){
+	w.close();
+}
+
+function getTxt1(){
+	//document: 해당 html
+	//getElementById : id를 찾아 화면 객체를 취득
+	//화면객체.value : 화면 객체의 속성 중 value의 값을 가져옴
+	var t = document.getElementById("txt1");
+	alert(t.value);
+	t.value ="가져갔다.";
+}
+
+function cc(){
+	document.getElementById("box").className = "b";	
+}
+
+function cc2(obj){
+	obj.className = "a";
+
+	
+}
+
+
+//NaN이 나오면 숫자로 변경 불가능 
+var s = "3.1415e";
+console.log(s * 1 + 1);
+//결과값이 true면 숫자가 아니다.
+console.log(isNaN(s * 1)); // isNaN(값) : 값이 NaN인지 확인
+</script>
+<style type="text/css">
+.a, .b{
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 100px;
+}
+
+.a{
+	background-color: red;
+	
+}
+
+.b{
+	background-color: blue;
+}
+</style>
+</head>
+<body>
+<input type="button" value="버튼"
+	onclick="test();"/>
+<input type="button" value="이동버튼"
+	onclick="test2();"/>
+<input type="button" value="새탭닫기버튼"
+	onclick="test3();"/>
+<br/>
+<input type="text" id="txt1"/>
+<input type="button" value="취득" onclick="getTxt1();"/>	
+<br/>
+<div class="a" id="box" onclick="cc2(this);"></div>
+<br/>
+<input type="button" value="바꿔라" onclick="cc();"/>
+</body>
+</html>

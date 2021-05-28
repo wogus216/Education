@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방향키 조작</title>
+<style type="text/css">
+#box {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: aqua;
+}
+</style>
+<script type="text/javascript">
+var t = 0; 
+
+var l = 0;
+
+function m(e) {
+	//console.log(e);
+	//console.log(e.keyCode);
+	
+	// w - 119, s - 115, a - 97, d - 100
+	var box = document.getElementById("box");
+	
+	switch(e.keyCode){
+	case 119: //w 위
+		if(t -10 >= 0){
+			
+			t -= 10;
+			}
+	break;
+		
+	
+	
+	case 100: //d 오른쪽
+		
+	l += 10;
+	
+	break;
+	
+	case 115: //s 아래
+	
+	t += 10;
+	
+	break;
+	
+	case 97: //a 왼쪽
+	if(l -10 >= 0){
+		
+	l -= 10;
+	}
+	
+	break;
+	
+	}
+	
+	box.style.top = t + "px";
+	box.style.right = l - "px";
+	box.style.bottom = t - "px";
+	box.style.left = l + "px";
+}
+</script>
+</head>
+<body onkeypress="m(event);">
+<div id="box"></div>
+</body>
+</html>
