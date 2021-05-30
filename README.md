@@ -6,7 +6,7 @@ It is not over until I WIN 🔥🔥🔥
 꾸준함은 모든것을 이긴다. !!!<br/>
 교육이 없는 날은 실습한 날
 
- Java
+ ### Java
 * [교육1일(변수,타입,조건문)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-1%EC%9D%BC%EC%B0%A8)
 * [교육2일(반복문,다항연산)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-2%EC%9D%BC%EC%B0%A8)
 * [교육4일(클래스,메소드)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-4%EC%9D%BC%EC%B0%A8)
@@ -19,7 +19,7 @@ It is not over until I WIN 🔥🔥🔥
 * [교육12일(static,final,main메소드,디자인패턴)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A112%EC%9D%BC%EC%B0%A8)
 * [교육13 ~ 15일(시험대비문제풀이)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-11%EC%9D%BC15%EC%9D%BC)
 
-DB
+### DB
 * [교육18일(데이터베이스,DBMS,SQL,select문,기본문법)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-18%EC%9D%BC%EC%B0%A8)
 * [교육19일(DUAL,NVL과 AS,문자열처리,TO_CHAR,랜덤,CASE,DECODE,서브쿼리)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-19%EC%9D%BC%EC%B0%A8)
 * [교육20일(순차함수,관계파악,Join)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-20%EC%9D%BC%EC%B0%A8)
@@ -30,7 +30,7 @@ DB
 
 
 
-HTML,CSS,Javascript,jQuery
+### HTML,CSS,Javascript,jQuery
 * [교육27일(HTML)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-27%EC%9D%BC%EC%B0%A8)
 * [교육28일(input Tag,목록데이터,img,파일경로)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-28%EC%9D%BC%EC%B0%A8)
 * [교육29일(link,div,span,select,CSS)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-29%EC%9D%BC%EC%B0%A8)
@@ -42,10 +42,10 @@ HTML,CSS,Javascript,jQuery
 * [교육38일(제이쿼리)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-38%EC%9D%BC%EC%B0%A8)
 * [교육42일(제이쿼리)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-42%EC%9D%BC%EC%B0%A8)
 
-JSP
+### JSP
 * [교육43일(JSP,MVC설명)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-43%EC%9D%BC%EC%B0%A8)
 
-Spring
+### Spring
 * [교육45일(설치,동작순서)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-45%EC%9D%BC%EC%B0%A8)
 * [교육46일(form,값전송방식)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-46%EC%9D%BC%EC%B0%A8)
 * [교육47일(Ajax,실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A147%EC%9D%BC%EC%B0%A8)
