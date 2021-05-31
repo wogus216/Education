@@ -19,10 +19,12 @@ public class TestController {
 		
 		@RequestMapping(value="/test1")
 		
-		public ModelAndView test1(ModelAndView mav) {
+		public ModelAndView test1(ModelAndView mav) throws Throwable  {
 			
 			List<HashMap<String, String>>list
 					=iTestService.getBList();
+			
+			mav.addObject("list", list);
 			
 			mav.setViewName("test/test1");
 			
