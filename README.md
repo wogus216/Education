@@ -51,4 +51,5 @@ It is not over until I WIN 🔥🔥🔥
 * [교육46일(form,값전송방식)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-46%EC%9D%BC%EC%B0%A8)
 * [교육47일(Ajax,실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A147%EC%9D%BC%EC%B0%A8)
 * [교육48일(DI,실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-48%EC%9D%BC%EC%B0%A8)
+* [교육49일(SampleSpring,게시판연동)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-49%EC%9D%BC)
  
