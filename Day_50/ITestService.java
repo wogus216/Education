@@ -7,5 +7,7 @@ public interface ITestService {
 
 	public List<HashMap<String, String>> getBList() throws Throwable;
 
-	public List<HashMap<String, String>> getMList() throws Throwable;;
+	public List<HashMap<String, String>> getMList() throws Throwable;
+
+	public HashMap<String, String> getB(HashMap<String, String> params) throws Throwable;
 }

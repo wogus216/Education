@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sample.web.test.service.ITestService;
@@ -36,16 +37,25 @@ public class TestController {
 	@RequestMapping(value="/testMList")
 	public ModelAndView testMList(ModelAndView mav) throws Throwable{
 		
-		List<HashMap<String, String>>list
+		List<HashMap<String, String>>list1
 							= iTestService.getMList();
 		
-		mav.addObject("list", list);
+		mav.addObject("list", list1);
 		
 		mav.setViewName("test/testMList");
 		
 		return mav;
 	}
 	
-	
+	@RequestMapping(value="/test2")
+	public ModelAndView tes2(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable{
+		//단일 컬럼은 해쉬맵으로 갖고온다
+		HashMap<String, String> data
+				=iTestService.getB(params);
+		
+		return mav;
+	}
 
 }

@@ -25,5 +25,11 @@ public class TestDao implements ITestDao {
 
 		return sqlSession.selectList("M.getMList");
 	}
+
+	@Override
+	public HashMap<String, String> getB(HashMap<String, String> params) throws Throwable {
+	
+		return null;
+	}
 	
 }

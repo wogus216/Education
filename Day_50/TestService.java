@@ -27,4 +27,10 @@ public class TestService implements ITestService {
 		return iTestDao.getMList();
 	}
 
+	@Override
+	public HashMap<String, String> getB(HashMap<String, String> params) throws Throwable {
+		
+		return iTestDao.getB(params);
+	}
+
 }
