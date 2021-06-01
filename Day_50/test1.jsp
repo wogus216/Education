@@ -17,7 +17,7 @@ thead{
 <script type="text/javascript">
 $(document).ready(function(){
 	$("tbody").on("click", "tr", function(){
-		$("bNo").val($(this).attr("name")); //여기서 this는 클릭한 tr
+		$("#bNo").val($(this).attr("name")); //여기서 this는 클릭한 tr
 		$("#goForm").submit();
 	});
 }); //ready end

@@ -28,8 +28,8 @@ public class TestDao implements ITestDao {
 
 	@Override
 	public HashMap<String, String> getB(HashMap<String, String> params) throws Throwable {
-	
-		return null;
+		//단일row selectOne
+		return sqlSession.selectOne("B.getB",params);
 	}
 	
 }

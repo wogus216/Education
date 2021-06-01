@@ -55,6 +55,10 @@ public class TestController {
 		HashMap<String, String> data
 				=iTestService.getB(params);
 		
+		mav.addObject("data", data);
+		
+		mav.setViewName("test/test2");
+		
 		return mav;
 	}
 

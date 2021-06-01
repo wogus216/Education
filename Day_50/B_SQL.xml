@@ -9,7 +9,7 @@
 	FROM B
 	ORDER BY B_NO DESC
 	</select>
-	
+	<!-- parameterType은 받는 값타입에 대한 것 resultType: 쿼리결과타입에 대한 것 -->
 	<select id="getB" parameterType="hashmap" resultType="hashmap">
 	SELECT B_NO, B_TITLE, B_WRITER, B_CON, TO_CHAR(B_DT, 'YYYY--MM--DD') AS B_DT
 	FROM B
