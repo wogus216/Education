@@ -8,8 +8,19 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+		src="resources/script/ckeditor/ckeditor.js">
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
+	CKEDITOR.replace("bCon", {
+		resize_enabled : false,
+		languague : "ko",
+		enterMode : "2",
+		width : "600",
+		height: "300"
+	});
+	
 	$("#listBtn").on("click", function(){
 		history.back();
 	});
@@ -21,6 +32,7 @@ $(document).ready(function(){
 	});
 	
 	$("#addBtn").on("click",function(){
+		$("#bCon").val(CKEDITOR.instances['bCon'].getData());
 		//입력된게 없는 경우
 		if($.trim($("#bTitle").val()) == ""){
 			alert("제목을 입력해주세요");
