@@ -86,16 +86,35 @@ public class TestController {
 	@RequestMapping(value="/test3s")
 	public ModelAndView test3s(
 			@RequestParam HashMap<String, String> params,
-			ModelAndView mav) throws Throwable {
+			ModelAndView mav) {
+		/*
+		 * int cnt = iTestService.addB(params);
+		 * 
+		 * if(cnt > 0) {
+		 *  mav.setViewName("redirect:test1"); 
+		 *  } else {
+		 * mav.addObject("msg", "등록실패"); 
+		 * mav.setViewName("redirect:test3");  
+		 * }
+		 */
 		
-		int cnt = iTestService.addB(params);
+			try {
+				int cnt = iTestService.addB(params);
+				
+				if(cnt > 0 ) {
+					 mav.setViewName("redirect:test1");
+				} else {
+					 mav.addObject("msg", "등록실패");
+					 mav.setViewName("test/test3s");
+				}
+				
+			} catch (Throwable e) {
+				e.printStackTrace();
+				 mav.addObject("msg", "오류발생");
+				 mav.setViewName("test/test3s");
+			}
+			
 		
-		if(cnt > 0) {
-			mav.setViewName("redirect:test1");
-		} else {
-			mav.addObject("msg", "등록실패");
-			mav.setViewName("redirect:test3");
-		}
 		return mav;
 	}
 }
