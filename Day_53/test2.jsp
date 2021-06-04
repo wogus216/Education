@@ -21,7 +21,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<form action="test4" id="goFomr" method="post">
+<form action="test4" id="goForm" method="post">
 	<input type="hidden" name="bNo" value="${data.B_NO}"/>
 </form>
 번호: ${data.B_NO}<br/>

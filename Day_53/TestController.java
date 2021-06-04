@@ -108,7 +108,7 @@ public class TestController {
 		
 		return mav;
 	}
-	
+	//수정
 	@RequestMapping(value="/test4")
 	public ModelAndView test4(
 			@RequestParam HashMap<String, String> params,
@@ -126,6 +126,27 @@ public class TestController {
 			//					get방식만 적용됨
 			mav.setViewName("redirect:test1");
 		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/test4s")
+	public ModelAndView test4s(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) {
+	
+			
+			try {
+				int cnt = iTestService.updateB(params);
+				
+				mav.addObject("cnt", cnt);
+					
+			} catch (Throwable e) {
+				e.printStackTrace();
+				mav.addObject("msg", "오류발생");
+			}
+			
+			mav.setViewName("test/test4s");
 		
 		return mav;
 	}
