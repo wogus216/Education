@@ -8,7 +8,6 @@ It is not over until I WIN 🔥🔥🔥
 **html,css,javascrip은 날짜별로 정리를 못했다ㅠㅠ** 
 
  ### Java
-* <a href="https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-1%EC%9D%BC%EC%B0%A8/" target="_blank">교육1일(변수,타입,조건문)</a>
 * [교육1일(변수,타입,조건문)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-1%EC%9D%BC%EC%B0%A8)
 * [교육2일(반복문,다항연산)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-2%EC%9D%BC%EC%B0%A8)
 * [교육4일(클래스,메소드)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-4%EC%9D%BC%EC%B0%A8)
