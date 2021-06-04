@@ -25,4 +25,9 @@
 		UPDATE B SET B_TITLE= #{bTitle}, B_CON = #{bCon}
 		WHERE B_NO = #{bNo}
 	</update>
+	
+	<delete id="deleteB" parameterType="hashmap">
+		DELETE FROM B
+		WHERE B_NO = #{bNo}
+	</delete>
 </mapper>

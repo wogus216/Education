@@ -45,4 +45,9 @@ public class TestService implements ITestService {
 		return iTestDao.updateB(params);
 	}
 
+	@Override
+	public int deleteB(HashMap<String, String> params) throws Throwable {
+		return iTestDao.deleteB(params);
+	}
+
 }

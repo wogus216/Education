@@ -42,5 +42,10 @@ public class TestDao implements ITestDao {
 		// TODO Auto-generated method stub
 		return sqlSession.update("B.updateB", params);
 	}
+
+	@Override
+	public int deleteB(HashMap<String, String> params) throws Throwable {
+		return sqlSession.delete("B.deleteB", params);
+	}
 	
 }

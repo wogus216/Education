@@ -46,7 +46,7 @@ public class TestController {
 //		
 //		return mav;
 //	}
-	
+	//등록
 	@RequestMapping(value="/test2")
 	public ModelAndView tes2(
 			@RequestParam HashMap<String, String> params,
@@ -75,7 +75,7 @@ public class TestController {
 		mav.setViewName("test/ajaxTest");
 		return mav;
 	}
-	
+	//상세보기
 	@RequestMapping(value="/test3")
 	public ModelAndView test3(ModelAndView mav) {
 		mav.setViewName("test/test3");
@@ -147,6 +147,32 @@ public class TestController {
 			}
 			
 			mav.setViewName("test/test4s");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/test5s")
+	public ModelAndView test5s(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) {
+	
+			
+			try {
+				int cnt = iTestService.deleteB(params);
+				
+				if(cnt > 0 ) {
+					 mav.setViewName("redirect:test1");
+				} else {
+					 mav.addObject("msg", "등록실패");
+					 mav.setViewName("test/test5s");
+				}
+				
+			} catch (Throwable e) {
+				e.printStackTrace();
+				 mav.addObject("msg", "오류발생");
+				 mav.setViewName("test/test5s");
+			}
+			
 		
 		return mav;
 	}
