@@ -54,3 +54,4 @@ It is not over until I WIN 🔥🔥🔥
 * [교육49일(SampleSpring,게시판연동)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-49%EC%9D%BC)
 * [교육50일(스프링동작순서,게시판연동 실습)](https://velog.io/write?id=b95f73c9-39df-4740-aea1-83f4d71375ac)
 * [교육52일(게시판글쓰기,회원등록실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-52%EC%9D%BC%EC%B0%A8)
+* [교육53일(게시판수정삭제,수정삭제실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-53%EC%9D%BC%EC%B0%A8)
