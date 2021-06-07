@@ -1,5 +1,5 @@
 # 💻Education
-It is not over until I WIN 🔥🔥🔥
+🔥**It is not over until I WIN** 🔥
 >수업시간에 공부한 코드 올리기<br/>
 >하루도 거르지말고 꼭 올리자 <br/>
 수업시간에 배우고 잘 모르겠고, 기억안나는 것은 정리해서 DIM에 올리자<br/>
