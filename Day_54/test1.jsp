@@ -36,12 +36,34 @@ $(document).ready(function(){
 	<input type="hidden" id="bNo" name="bNo"/>
 </form>
 <form action="test1" id="searchForm" method="post">
+<input type="hidden" id="page" name="page" value="${page}"/>
 <select name="searchGbn">
-	<option value="0">제목</option>
-	<option value="1">작성자</option>
-	<option value="2">글번호</option>
-</select>
-<input type="text" name="searchTxt" />
+	<c:choose>
+		<c:when test="${param.searchGbn eq 0 }">
+			<option value="0" selected="selected">제목</option>
+		</c:when>
+		<c:otherwise>
+			<option value="0">제목</option>
+		</c:otherwise>
+	</c:choose>
+	<c:choose>
+		<c:when test="${param.searchGbn eq 1 }">
+			<option value="1" selected="selected">작성자</option>
+		</c:when>
+		<c:otherwise>
+			<option value="1">작성자</option>
+		</c:otherwise>
+	</c:choose>
+	<c:choose>
+		<c:when test="${param.searchGbn eq 2 }">
+			<option value="2" selected="selected">글번호</option>
+		</c:when>
+		<c:otherwise>
+			<option value="2">글번호</option>
+		</c:otherwise>
+	</c:choose>
+	</select>
+<input type="text" name="searchTxt" value="${param.searchTxt}"/>
 <input type="button" value="검색" id="searchBtn"/>
 <input type="button" value="작성" id="addBtn"/>
 </form>

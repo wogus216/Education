@@ -42,5 +42,10 @@ public class TestDao implements ITestDao {
 	public int deleteB(HashMap<String, String> params) throws Throwable {
 		return sqlSession.delete("B.deleteB", params);
 	}
+
+	@Override
+	public int getBCnt(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("B.getBcnt", params);
+	}
 	
 }

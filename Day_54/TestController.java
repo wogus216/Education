@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sample.common.bean.PagingBean;
+import com.spring.sample.common.service.IPagingService;
 import com.spring.sample.web.test.service.ITestService;
 
 @Controller
 public class TestController {
 
 	//객체주입 받겠다.
+	@Autowired
+	public IPagingService iPagingService;
+	
 	@Autowired
 	public ITestService iTestService;
 	
@@ -23,11 +28,28 @@ public class TestController {
 	public ModelAndView test1(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable {
+		// 현재 페이지
+		int page = 1; 
+		if(params.get("page") != null) {
+			page = Integer.parseInt(params.get("page"));
+		}
+		// 총 게시글 수 
+		int cnt = iTestService.getBCnt(params);
 		
-		List<HashMap<String, String>>list
-					= iTestService.getBList(params);
+		// 페이징 정보 취득
+		PagingBean pb= iPagingService.getPagingBean(page, cnt); 
+		//글번호 P 없으면 글번호
+		//게시글 시작번호, 종료번호 할당
+		params.put("startCnt", Integer.toString(pb.getStartCount()));
+		params.put("endCnt", Integer.toString(pb.getEndCount()));
+		
+		// 목록 취득
+		List<HashMap<String, String>>list= iTestService.getBList(params);
 		
 		mav.addObject("list", list);
+		mav.addObject("pb", pb);
+		mav.addObject("page", page);
+		mav.addObject("cnt", cnt);
 		
 		mav.setViewName("test/test1");
 	

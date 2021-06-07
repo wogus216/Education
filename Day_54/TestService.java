@@ -50,4 +50,9 @@ public class TestService implements ITestService {
 		return iTestDao.deleteB(params);
 	}
 
+	@Override
+	public int getBCnt(HashMap<String, String> params) throws Throwable {
+		return iTestDao.getBCnt(params);
+	}
+
 }
