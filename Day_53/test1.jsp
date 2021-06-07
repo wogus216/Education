@@ -25,6 +25,9 @@ $(document).ready(function(){
 		location.href = "test3";
 	});//addBtn end
 	
+	$("searchBtn").on("click",function(){
+		$("#searchForm").submit();
+	});
 }); //ready end
 </script>
 </head>
@@ -32,7 +35,15 @@ $(document).ready(function(){
 <form action="test2" id="goForm" method="post">
 	<input type="hidden" id="bNo" name="bNo"/>
 </form>
+<form action="test1" id="searchForm" method="post">
+<select name="searchGbn">
+	<option value="0">제목</option>
+	<option value="1">작성자</option>
+</select>
+<input type="text" value="searchTxt" />
+<input type="button" value="검색" id="searchBtn"/>
 <input type="button" value="작성" id="addBtn"/>
+</form>
 <table>
 	<thead>
 		<tr>
