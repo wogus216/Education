@@ -28,6 +28,11 @@ $(document).ready(function(){
 	$("#searchBtn").on("click",function(){
 		$("#searchForm").submit();
 	});
+	
+	$("#pagingWrap").on("click", "span", function(){
+		$("#page").val($(this).attr("name"));
+		$("#searchForm").submit();
+	}); 
 }); //ready end
 </script>
 </head>
@@ -87,5 +92,39 @@ $(document).ready(function(){
 		</c:forEach>
 	</tbody>
 </table>
+<div id="pagingWrap">
+<span name="1">처음</span>
+<!-- 이전페이지 -->
+<c:choose>
+	<c:when test="${page eq 1}">
+	<span name="1">이전</span>
+	</c:when>
+	<c:otherwise>
+	<span name="${page-1}">이전</span>
+	</c:otherwise>
+</c:choose>
+<!-- 페이지들  -->
+<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
+		<!-- 현재 페이지인 경우 볼드 처리 -->
+	<c:choose>
+		<c:when test="${i eq page}">
+				<span name="${i}"><b>${i}</b></span>
+		</c:when>
+		<c:otherwise>
+			<span name="${i}"><b>${i}</b></span>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>
+<!-- 다음페이지  -->
+<c:choose>
+	<c:when test="${page eq pb.maxPcount}">
+		<span name="${pb.maxPcount}"><b>다음</b></span>
+	</c:when>
+	<c:otherwise>
+		<span name="${page + 1}">다음</span>
+	</c:otherwise>
+</c:choose>
+<span name="${pb.maxPcount}">마지막</span>
+</div>
 </body>
 </html>

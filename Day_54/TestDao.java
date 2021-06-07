@@ -45,7 +45,7 @@ public class TestDao implements ITestDao {
 
 	@Override
 	public int getBCnt(HashMap<String, String> params) throws Throwable {
-		return sqlSession.selectOne("B.getBcnt", params);
+		return sqlSession.selectOne("B.getBCnt", params);
 	}
 	
 }
