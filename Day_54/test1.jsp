@@ -26,6 +26,7 @@ $(document).ready(function(){
 	});//addBtn end
 	
 	$("#searchBtn").on("click",function(){
+		$("#page").val(1);
 		$("#searchForm").submit();
 	});
 	
