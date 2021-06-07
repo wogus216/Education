@@ -25,7 +25,7 @@ $(document).ready(function(){
 		location.href = "test3";
 	});//addBtn end
 	
-	$("searchBtn").on("click",function(){
+	$("#searchBtn").on("click",function(){
 		$("#searchForm").submit();
 	});
 }); //ready end
@@ -39,8 +39,9 @@ $(document).ready(function(){
 <select name="searchGbn">
 	<option value="0">제목</option>
 	<option value="1">작성자</option>
+	<option value="2">글번호</option>
 </select>
-<input type="text" value="searchTxt" />
+<input type="text" name="searchTxt" />
 <input type="button" value="검색" id="searchBtn"/>
 <input type="button" value="작성" id="addBtn"/>
 </form>
