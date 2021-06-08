@@ -18,14 +18,21 @@ $(document).ready(function(){
 	$("#addBtn").on("click",function(){
 		location.href = "testMAdd";
 	}); // addBtn end
+	
 	$("#searchBtn").on("click",function(){
 		$("#page").val(1);
 		$("#searchForm").submit();
 	}); //search end
+	
 	$("#pagingWrap").on("click","span",function(){
 		$("#page").val($(this).attr("name"));
 		$("#searchForm").submit();
 	}); //pagingWrap end
+	
+	//스크립트은 사용자에게 보여진다. 코어태그는 사용자가 확인이 어려움 
+	if("${param.searchGbn}" !="") {
+		$("#searchGbn").val("${param.searchGbn}");
+	}
 	
 }); //ready end
 </script>
@@ -36,31 +43,11 @@ $(document).ready(function(){
 </form>
 <form action="testMList" id="searchForm" method="post">
 <input type="hidden" id="page" name="page" value="${page}">
-<select name="searchGbn">
-	<c:choose>
-		<c:when test="${param.searchGbn eq 0 }">
-			<option value="0" selected="selected">회원번호</option>
-		</c:when>
-		<c:otherwise>
-			<option value="0">회원번호</option>
-		</c:otherwise>
-	</c:choose>	
-	<c:choose>
-		<c:when test="${param.searchGbn eq 1 }">
-			<option value="1" selected="selected">아이디</option>
-		</c:when>
-		<c:otherwise>
-			<option value="1">아이디</option>
-		</c:otherwise>
-	</c:choose>
-	<c:choose>
-		<c:when test="${param.searchGbn eq 2 }">
-			<option value="2" selected="selected">이름</option>
-		</c:when>
-		<c:otherwise>
-			<option value="2">이름</option>
-		</c:otherwise>
-	</c:choose>		
+<!--name은 컨트롤러에 넘겨 줄 때 키값 -->
+<select name="searchGbn" id="searchGbn"> 
+		<option value="0">회원번호</option>
+		<option value="1">아이디</option>
+		<option value="2">이름</option>
 </select>
 <input type="text" name="searchTxt" value="${param.searchTxt}">
 <input type="button" value="검색" id="searchBtn"/>
@@ -116,7 +103,7 @@ $(document).ready(function(){
 <!-- 다음페이지 -->
 <c:choose>
 	<c:when test="${page eq pb.maxPcount}">
-				<span id="gsg" name="${pb.maxPcount}"><b>다음</b></span>
+				<span name="${pb.maxPcount}"><b>다음</b></span>
 	</c:when>
 	<c:otherwise>
 			<span name="${page +1}">다음</span>
