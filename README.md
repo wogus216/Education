@@ -56,4 +56,5 @@
 * [교육52일(게시판글쓰기,회원등록실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-52%EC%9D%BC%EC%B0%A8)
 * [교육53일(게시판수정삭제,수정삭제실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-53%EC%9D%BC%EC%B0%A8)
 * [교육54일(게시판검색,페이징,페이징실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-54%EC%9D%BC%EC%B0%A8)
+* [교육55일(M테이블로 실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-55%EC%9D%BC%EC%B0%A8)
 
