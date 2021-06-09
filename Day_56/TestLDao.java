@@ -14,7 +14,7 @@ public class TestLDao implements ITestLDao {
 
 	@Override
 	public HashMap<String, String> getM(HashMap<String, String> params) throws Throwable {
-
-		return sqlSession.selectOne("L.getM", params);
+		
+		return sqlSession.selectOne("L.getM",params);
 	}
 }
