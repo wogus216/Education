@@ -1,0 +1,6 @@
+
+SELECT M_NO, M_NM
+FROM M
+WHERE M_ID = 'TEST1'
+AND M_PW = '1234'
+;
