@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="L"><!-- namespace: 클래스명과동일 -->
 	<select id="getM" parameterType="hashmap" resultType="hashmap">
-	
+		SELECT M_NO, M_NM
+		FROM M
+		WHERE M_ID = #{mId}
+		AND M_PW = #{mPw}
 	</select>
 </mapper>
