@@ -88,6 +88,17 @@ $(document).ready(function(){
 			$("#actionForm").submit();
 		}
 	});
+		
+	//목록 삭제버튼 클릭
+	$("table").on("click", "#deleteBtn",function(){
+		if(confirm("삭제하시겠습니까?")) {
+			//button.td.     tr
+			$("#obNo").val($(this).parent().parent().attr("name"));
+			
+			$("#actionForm").attr("action","testODelete");
+			$("#actionForm").submit();
+		}
+	});
 }); //ready end
 </script>
 </head>

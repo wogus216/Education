@@ -15,4 +15,6 @@ public List<HashMap<String, String>> getObList(HashMap<String, String> params) t
 
 public int updateOb(HashMap<String, String> params) throws Throwable;
 
+public int deleteOb(HashMap<String, String> params) throws Throwable;
+
 }

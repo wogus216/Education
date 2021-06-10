@@ -54,6 +54,12 @@
 	<update id="updateOb" parameterType="hashmap">
 	UPDATE OB SET OB_CON = #{obCon}
 	WHERE OB_NO = #{obNo}
-	AND M_NO =#{mNo}
+	AND M_NO = #{mNo}
+	</update>
+	<!-- 삭제가 아니라 업데이트다. -->
+	<update id="deleteOb" parameterType="hashmap">
+	UPDATE OB SET OB_DEL = 0
+	WHERE OB_NO =  #{obNo}
+	AND M_NO = #{mNo}
 	</update>
 </mapper>

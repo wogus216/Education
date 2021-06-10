@@ -152,5 +152,30 @@ public class TestLController {
 		mav.setViewName("test/testOUpdate");
 		return mav;
 	}
+
+	@RequestMapping(value="testODelete")
+	public ModelAndView testODelete(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav
+			) throws Throwable {
 		
+		try {
+			int cnt = iTestLService.deleteOb(params);
+			
+			if(cnt > 0) {
+				mav.setViewName("redirect: testO");
+			} else {
+				mav.addObject("res", "failed");
+				mav.setViewName("test/testODelete");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject("res", "error");
+			mav.setViewName("test/testODelete");
+		}
+		
+		
+		return mav;
+		
+	}
 }

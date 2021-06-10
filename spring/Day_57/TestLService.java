@@ -38,4 +38,9 @@ public class TestLService implements ITestLService {
 	public int updateOb(HashMap<String, String> params) throws Throwable {
 		return iTestLDao.updateOb(params);
 	}
+
+	@Override
+	public int deleteOb(HashMap<String, String> params) throws Throwable {
+		return iTestLDao.deleteOb(params);
+	}
 }

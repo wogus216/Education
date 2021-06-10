@@ -40,4 +40,9 @@ public class TestLDao implements ITestLDao {
 	public int updateOb(HashMap<String, String> params) throws Throwable {
 		return sqlSession.update("L.updateOb", params);
 	}
+
+	@Override
+	public int deleteOb(HashMap<String, String> params) throws Throwable {
+		return sqlSession.update("L.deleteOb", params);
+	}
 }
