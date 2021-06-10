@@ -6,10 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#actionForm #updateBtn,#actionForm #cancelBtn{
+	display : none;
+} 
+</style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	//구분자 내용 남기기
+	if("${param.searchGbn}" !=""){
+		$("#searchGbn").val("${param.searchGbn}");
+	}
 	$("#logoutBtn").on("click",function(){
 		location.href = "testLogout";
 	});
@@ -35,6 +44,29 @@ $(document).ready(function(){
 	
 		$("#actionForm").attr("action", "testO");
 		$("#actionForm").submit();
+	});
+	
+	//페이징 이벤트
+	$("#pagingWrap").on("click","span",function(){
+		$("#page").val($(this).attr("name"));
+		
+		$("#actionForm").attr("action", "testO");
+		$("#actionForm").submit();
+	});
+	
+	// 목록의 수정 버튼 클릭 
+	$("table").on("click", "#updateBtn",function(){
+		$("#actionForm #writeBtn").hide();
+		$("#actionForm #updateBtn,#actionForm #cancelBtn").show();
+			//button.td.     tr
+		$("#obNo").val($(this).parent().parent().attr("name"));
+		//nth-child : 몇 개 째
+		console.log($(this).parent().parent().children(":nth-child(2)").html());
+		// eq: 몇번 째 인덱스 요소
+		console.log($(this).parent().parent().children(":eq(1)").html());
+		console.log($(this).parent().parent().children().eq(1).html());
+			
+			$("#obCon").val($(this).parent().parent().children(":nth-child(2)").html());
 	});
 }); //ready end
 </script>
@@ -67,8 +99,11 @@ $(document).ready(function(){
 				</c:when>
 				<c:otherwise>
 					<input type="hidden" name="mNo" value="${sMNo}"/>
+					<input type="hidden" name="obNo" id="obNo" />
 					${sMNm}<textarea rows="3" cols="50" id="obCon" name="obCon"></textarea>
 					<input type="button" value="작성" id="writeBtn"/>
+					<input type="button" value="수정" id="updateBtn"/>
+					<input type="button" value="취소" id="cancelBtn"/>
 				</c:otherwise>
 			</c:choose>
 		</form>
@@ -104,7 +139,7 @@ $(document).ready(function(){
 			<option value="0">작성자</option>			
 			<option value="1">내용</option>			
 		</select>
-		<input type="text" id="searchTxt"/>
+		<input type="text" id="searchTxt" value="${param.searchTxt}"/>
 		<input type="button" value="검색" id="searchBtn"/><br/>
 		<!-- 페이징 -->
 		<div id="pagingWrap">
