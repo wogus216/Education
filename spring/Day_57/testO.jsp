@@ -46,8 +46,11 @@ $(document).ready(function(){
 <div>
 	<div class="write_area">
 		<form action="#" id="actionForm" method="post">
-			<!-- 기본값 : hidden -->
-
+			<!-- 기본값 : hidden, 검색이 달린 페이지 3요수 필수 !! -->
+			<input type="hidden" id="sg" name="searchGbn" value="${param.searchGbn}" />
+			<input type="hidden" id="st" name="searchTxt" value="${param.searchTxt}" />
+			<input type="hidden" id="page" name="page" value="${page}" />
+			
 			<!-- 글작성, 편집영역 -->
 			<c:choose>
 				<c:when test="${empty sMNo}">
@@ -83,6 +86,48 @@ $(document).ready(function(){
 		</table>
 	</div>
 	<div class="paging_area">
+		<!-- 검색 -->
+		<select id="searchGbn">
+			<option value="0">작성자</option>			
+			<option value="1">내용</option>			
+		</select>
+		<input type="text" id="searchTxt"/><br/>
+		<!-- 페이징 -->
+		<div id="pagingWrap">
+			<span name="1">처음</span>
+			<!-- 이전 페이지 -->
+			<c:choose>
+				<c:when test="${page eq 1}">
+					<span name="1">이전</span>
+				</c:when>
+				<c:otherwise>
+					<span name="${page-1}">이전</span>
+				</c:otherwise>
+			</c:choose>
+			<!-- 페이지들 -->
+			<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
+				<!-- 현재페이지인 경우 볼드 처리 -->
+				<c:choose>
+					<c:when test="${i eq page}">
+						<span name="${i}"><b>${i}</b></span>
+					</c:when>
+					<c:otherwise>
+						<span name="${i}">${i}</span>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<!-- 다음페이지 -->
+			<c:choose>
+				<c:when test="${page eq pb.maxPcount}">
+							<span name="${pb.maxPcount}"><b>다음</b></span>
+				</c:when>
+				<c:otherwise>
+						<span name="${page +1}">다음</span>
+				</c:otherwise>
+			</c:choose>
+			<!-- 마지막 페이지 -->
+			<span name="${pb.maxPcount}">마지막</span>
+			</div>	
 	</div>
 </div>
 </body>

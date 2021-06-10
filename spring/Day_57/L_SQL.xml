@@ -12,4 +12,25 @@
 	INSERT INTO OB(OB_NO,M_NO,OB_CON)
 	VALUES(OB_SEQ.NEXTVAL, #{mNo}, #{obCon})
 	</insert>
+	
+	<select id="getObCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM OB O INNER JOIN M M
+	                  ON O.M_NO = M.M_NO
+	WHERE O.OB_DEL = 1
+	<if test="searchTxt != null and searchTxt != ''">
+		<choose>
+			<when test="searchGbn == 0">
+				AND M.M_NM LIKE '%' || #{searchTxt} || '%'
+			</when>
+			<when test="searchGbn == 1">
+				AND O.OB_CON LIKE '%' || #{searchTxt} || '%'
+			</when>
+		</choose>	
+	</if>
+	</select>
+	
+	<select id="getObList" parameterType="hashmap" resultType="hashmap">
+		
+	</select>
 </mapper>

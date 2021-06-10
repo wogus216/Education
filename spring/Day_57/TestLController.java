@@ -1,8 +1,8 @@
 package com.spring.sample.web.test.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sample.common.bean.PagingBean;
+import com.spring.sample.common.service.IPagingService;
 import com.spring.sample.web.test.service.ITestLService;
 
 @Controller
 public class TestLController {
 
+	@Autowired
+	public IPagingService iPagingService;
+	
 	@Autowired
 	public ITestLService iTestLService;
 	
@@ -72,7 +77,34 @@ public class TestLController {
 	}
 	
 	@RequestMapping(value="/testO")
-	public ModelAndView testO(ModelAndView mav) {
+	public ModelAndView testO(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable {
+		//페이지 취득
+		int page = 1;
+		
+		if(params.get("page") !=null) {
+			page = Integer.parseInt(params.get("page"));
+		}
+		
+		//총 글 개수
+		int cnt = iTestLService.getObCnt(params);
+		
+		
+		//페이징 계산
+		PagingBean pb = iPagingService.getPagingBean(page, cnt);
+		
+		params.put("startCnt", Integer.toString(pb.getStartCount()));
+		params.put("endCnt", Integer.toString(pb.getEndCount()));
+		
+		//목록 취득
+		List<HashMap<String, String>> list
+						=iTestLService.getObList(params);
+		//jsp로 넘긴다.
+		mav.addObject("lsit", list);
+		mav.addObject("page", page);
+		mav.addObject("cnt", cnt);
+		
 		mav.setViewName("test/testO");
 		
 		return mav;
@@ -82,7 +114,22 @@ public class TestLController {
 	public ModelAndView testOWrite(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable {
-				
+			
+		try {
+			int cnt = iTestLService.writeOb(params);
+			
+			if(cnt > 0) {
+				mav.setViewName("redirect: testO");
+			} else {
+				mav.addObject("res", "failed");
+				mav.setViewName("test/testOWrite");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject("res", "error");
+			mav.setViewName("test/testOWrite");
+		}
+		
 		return mav;
 		
 	}
