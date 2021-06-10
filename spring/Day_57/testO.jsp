@@ -68,6 +68,26 @@ $(document).ready(function(){
 			
 			$("#obCon").val($(this).parent().parent().children(":nth-child(2)").html());
 	});
+	
+	//취소 버튼
+		$("#actionForm #cancelBtn").on("click", function(){
+			$("#obCon").val("");
+			$("#obNo").val("");
+			
+			$("#actionForm #writeBtn").show();
+			$("#actionForm #updateBtn,#actionForm #cancelBtn").hide();
+		}); //취소 버튼
+		
+	// 업데이트
+	$("#actionForm #updateBtn").on("click",function(){
+		if($.trim($("#obCon").val()) == ""){
+			alert("내용을 넣어주세요");
+			$("#obCon").focus();
+		} else{
+			$("#actionForm").attr("action","testOUpdate");
+			$("#actionForm").submit();
+		}
+	});
 }); //ready end
 </script>
 </head>
@@ -100,7 +120,8 @@ $(document).ready(function(){
 				<c:otherwise>
 					<input type="hidden" name="mNo" value="${sMNo}"/>
 					<input type="hidden" name="obNo" id="obNo" />
-					${sMNm}<textarea rows="3" cols="50" id="obCon" name="obCon"></textarea>
+					${sMNm}<br/>
+					<textarea rows="3" cols="50" id="obCon" name="obCon"></textarea>
 					<input type="button" value="작성" id="writeBtn"/>
 					<input type="button" value="수정" id="updateBtn"/>
 					<input type="button" value="취소" id="cancelBtn"/>

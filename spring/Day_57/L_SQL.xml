@@ -31,6 +31,29 @@
 	</select>
 	
 	<select id="getObList" parameterType="hashmap" resultType="hashmap">
-		
+		SELECT O.OB_NO, O.OB_CON, O.M_NO,O.M_NM
+		FROM (SELECT O.OB_NO,O.OB_CON,M.M_NO,M.M_NM,
+                ROW_NUMBER() OVER(ORDER BY O.OB_NO DESC) AS RNUM
+      		  FROM OB O INNER JOIN M M
+                          ON O.M_NO = M.M_NO
+		      WHERE O.OB_DEL = 1 
+		      	<if test="searchTxt != null and searchTxt != ''">
+				<choose>
+					<when test="searchGbn == 0">
+						AND M.M_NM LIKE '%' || #{searchTxt} || '%'
+					</when>
+					<when test="searchGbn == 1">
+						AND O.OB_CON LIKE '%' || #{searchTxt} || '%'
+					</when>
+				</choose>	
+			</if>
+		      ) O
+		WHERE O.RNUM BETWEEN #{startCnt} AND #{endCnt}
 	</select>
+	<!-- ${안에 값은}jsp에서 name 값을 갖고온다.  -->
+	<update id="updateOb" parameterType="hashmap">
+	UPDATE OB SET OB_CON = #{obCon}
+	WHERE OB_NO = #{obNo}
+	AND M_NO =#{mNo}
+	</update>
 </mapper>

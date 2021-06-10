@@ -101,9 +101,12 @@ public class TestLController {
 		List<HashMap<String, String>> list
 						=iTestLService.getObList(params);
 		//jsp로 넘긴다.
-		mav.addObject("lsit", list);
+		System.out.println(list);
+		System.out.println(params);
+		mav.addObject("list", list);
 		mav.addObject("page", page);
-		mav.addObject("cnt", cnt);
+		mav.addObject("pb", pb);
+		
 		
 		mav.setViewName("test/testO");
 		
@@ -133,4 +136,21 @@ public class TestLController {
 		return mav;
 		
 	}
+	
+	@RequestMapping(value="testOUpdate")
+	public ModelAndView testOUpdate(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable{
+				
+		try {
+			int cnt = iTestLService.updateOb(params);
+			mav.addObject("cnt", cnt);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("test/testOUpdate");
+		return mav;
+	}
+		
 }

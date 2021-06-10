@@ -13,4 +13,6 @@ public int getObCnt(HashMap<String, String> params)throws Throwable;
 
 public List<HashMap<String, String>> getObList(HashMap<String, String> params) throws Throwable;
 
+public int updateOb(HashMap<String, String> params) throws Throwable;
+
 }

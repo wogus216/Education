@@ -33,4 +33,9 @@ public class TestLService implements ITestLService {
 	public List<HashMap<String, String>> getObList(HashMap<String, String> params) throws Throwable {
 		return iTestLDao.getObList(params);
 	}
+
+	@Override
+	public int updateOb(HashMap<String, String> params) throws Throwable {
+		return iTestLDao.updateOb(params);
+	}
 }

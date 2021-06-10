@@ -33,6 +33,11 @@ public class TestLDao implements ITestLDao {
 
 	@Override
 	public List<HashMap<String, String>> getObList(HashMap<String, String> params) throws Throwable {
-		return sqlSession.selectList("L.get.getObList", params);
+		return sqlSession.selectList("L.getObList", params);
+	}
+
+	@Override
+	public int updateOb(HashMap<String, String> params) throws Throwable {
+		return sqlSession.update("L.updateOb", params);
 	}
 }
