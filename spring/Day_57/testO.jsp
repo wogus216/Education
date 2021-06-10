@@ -27,6 +27,15 @@ $(document).ready(function(){
 				$("#actionForm").submit();
 			}
 	});
+	$("#searchBtn").on("click",function(){
+		
+		$("#page").val(1);
+		$("#sg").val($("#searchGbn").val());
+		$("#st").val($("#searchTxt").val());
+	
+		$("#actionForm").attr("action", "testO");
+		$("#actionForm").submit();
+	});
 }); //ready end
 </script>
 </head>
@@ -74,14 +83,18 @@ $(document).ready(function(){
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>김태리</td>
-					<td>아주좋아 오늘</td>
-					<td>
-						<input type="button" value="수정" id="updateBtn"/>
-						<input type="button" value="삭제" id="deleteBtn"/>
-					</td>
-				</tr>
+				<c:forEach var="data" items="${list}">
+					<tr name="${data.OB_NO}">
+						<td>${data.M_NM}</td>
+						<td>${data.OB_CON}</td>
+						<td>
+							<c:if test="${sMNo eq data.M_NO}">
+								<input type="button" value="수정" id="updateBtn"/>
+								<input type="button" value="삭제" id="deleteBtn"/>
+							</c:if>
+						</td>	
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -91,7 +104,8 @@ $(document).ready(function(){
 			<option value="0">작성자</option>			
 			<option value="1">내용</option>			
 		</select>
-		<input type="text" id="searchTxt"/><br/>
+		<input type="text" id="searchTxt"/>
+		<input type="button" value="검색" id="searchBtn"/><br/>
 		<!-- 페이징 -->
 		<div id="pagingWrap">
 			<span name="1">처음</span>
