@@ -62,6 +62,25 @@ $(document).ready(function(){
 		</form>
 	</div>
 	<div class="list_araa">
+		<table border="2" cellspaing="0">
+			<thead>
+				<tr>
+					<th>작성자</th>
+					<th>내용</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>김태리</td>
+					<td>아주좋아 오늘</td>
+					<td>
+						<input type="button" value="수정" id="updateBtn"/>
+						<input type="button" value="삭제" id="deleteBtn"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div class="paging_area">
 	</div>
