@@ -36,7 +36,7 @@ $(document).ready(function(){
 				data : params, // 보낼 데이터 (문자열 형태)
 				success : function(res) { //성공 시 다음 함수 실행
 					if(res.resMsg == "success"){
-						location.href = "testO";
+						location.href = "testABList";
 					} else{
 						alert("아이디 또는 비밀번호가 일치하지 않습니다.")
 						$("#sp_msg").html("자바스크립트형식신기신기");

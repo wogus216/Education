@@ -48,7 +48,7 @@ public class TestAController {
 		HashMap<String, String> data = iTestLService.getM(params);
 		
 		if(data != null) { //사용자 정보가 있음
-			session.setAttribute("sMNO", data.get("M_NO"));
+			session.setAttribute("sMNo", data.get("M_NO"));
 			session.setAttribute("sMNm", data.get("M_NM"));
 			System.out.println(session.getAttribute("sMNm"));
 			
@@ -64,7 +64,23 @@ public class TestAController {
 		
 	}
 	
-	 
+	 @RequestMapping(value="/testABList")
+	 public ModelAndView testABList(
+			 @RequestParam HashMap<String, String> params,
+			 ModelAndView mav) {
+		 
+		 int page = 1;
+		 
+		 if(params.get("page") != null) {
+			 page = Integer.parseInt(params.get("page"));
+		 }
+	
+		 mav.addObject("page", page);
+		 mav.setViewName("testa/testABList");
+		 
+		 return mav;
+		 
+	 }
 	
 	
 }
