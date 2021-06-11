@@ -1,6 +1,7 @@
 package com.spring.sample.web.testa.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,12 +15,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.sample.common.bean.PagingBean;
+import com.spring.sample.common.service.IPagingService;
 import com.spring.sample.web.test.service.ITestLService;
+import com.spring.sample.web.test.service.ITestService;
 
 @Controller
 public class TestAController {
 	@Autowired
 	public ITestLService iTestLService;
+	
+	@Autowired
+	public ITestService iTestService;
+	
+	@Autowired
+	public IPagingService iPagingService;
 
 	@RequestMapping(value="/testALogin")
 	public ModelAndView testALogin(ModelAndView mav) {
@@ -82,5 +92,39 @@ public class TestAController {
 		 
 	 }
 	
+	@RequestMapping(value="/testABLists",
+					method = RequestMethod.POST,
+					produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	public String testABLists(
+			@RequestParam HashMap<String, String> params) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		// 현재 페이지
+		int page = Integer.parseInt(params.get("page"));
+	 
+				
+		// 총 게시글 수 
+		int cnt = iTestService.getBCnt(params);
+				
+		// 페이징 정보 취득
+		PagingBean pb= iPagingService.getPagingBean(page, cnt); 
+		
+		//글번호 P 없으면 글번호
+		//게시글 시작번호, 종료번호 할당
+		params.put("startCnt", Integer.toString(pb.getStartCount()));
+		params.put("endCnt", Integer.toString(pb.getEndCount()));
+				
+		// 목록 취득
+		List<HashMap<String, String>>list= iTestService.getBList(params);
+		
+		modelMap.put("list", list);
+		modelMap.put("pb", pb);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 	
+
 }
+

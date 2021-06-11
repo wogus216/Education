@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+
 .list_wrap table{
 	border-collapse: collapse;
 }
@@ -38,19 +40,123 @@
 	background-color: blue;
 	color: white;
 }
+.paing_wrap{
+	margin-top: 10px;
+}
+
+.paging_wrap div{
+	display:inline-block;
+	padding: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	border: 1px solid #444;
+	border-radius: 3px;
+	width: 60px;
+	cursor: pointer;
+	text-align: center;
+}
+.paging_wrap div:active, #searchBtn:hover,#writeBtn:active{
+	background-color: aqua;
+}
+.paging_wrap .on{
+	background-color: red;
+}	
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js">
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+	if("${param.searchGbn}" != ""){
+		$("#searchGbn").val("${param.searchGbn}");
+	}
+	
+	reloadList();
+	
 	$("#loginBtn").on("click",function(){
 		location.href = "testALogin";
 	});
 	$("#logoutBtn").on("click",function(){
 		location.href = "testALogout";
 	});
-});
+	
+	$("#searchBtn").on("click", function(){
+		$("#page").val(1);
+		reloadList();
+	});
+	
+	$(".paging_wrap").on("click","div",function(){
+		$("#page").val($(this).attr("page"));
+		reloadList();
+	});
+}); //ready end
+
+ 
+
+function reloadList() {
+	var params = $("#actionForm").serialize();
+	
+	//ajax
+	$.ajax({
+		url: "testABLists", 
+		type: "post", 
+		dataType: "json",
+		data : params, 
+		success : function(res) {
+			console.log(res);
+			drawList(res.list);
+			drawPaging(res.pb);
+		},
+		error: function(request, status, error){ 
+			console.log(error);
+		}
+	
+	});
+}
+// 목록 그리기
+function drawList(list){
+	var html = "";
+	//" +  + " : 문자열 넣는 꿀팁
+	for(var d of list){
+		html += "<tr bno=\"" + d.B_NO + "\">";
+		html += "<td>" +  d.B_NO + "</td> ";
+		html += "<td>" +  d.B_TITLE + "</td> ";
+		html += "<td>" +  d.B_WRITER + "</td> ";
+		html += "<td>" +  d.B_DT + "</td> ";
+		html += "</tr>";
+	}
+	
+	$(".list_wrap tbody").html(html);
+}
+// 페이징 그리기
+function drawPaging(pb){
+	var html = "";
+//	" + + "
+	html += "<div page=\"1\">처음</div>";
+	
+	if($("#page").val() =="1") {
+		html += "<div page=\"1\">이전</div>";
+	} else{
+		html += "<div page=\"" + ($("#page").val() - 1)  + "\">1</div>";
+	}
+	for(var i = pb.startPcount ; i <= pb.endPcount ; i++){
+		if($("#page").val() == i){
+			html +="<div class=\"on\" page=\"" + i + "\">" + i + "</div>";
+		}else{
+			html +=	"<div page=\"" + i + "\">" + i + "</div>";
+		}
+	}
+	
+	if($("#page").val() == pb.maxPcount){
+		html += "<div page=\"" + pb.maxPcount + "\">다음</div>";
+	} else{
+		html += "<div page=\"" + ($("#page").val() * 1 + 1)+ "\">다음</div>";
+		
+	}
+	html += "<div page=\"" + pb.maxPcount + "\">마지막</div>";
+	
+	$(".paging_wrap").html(html);
+}
 </script>
 </head>
 <body>
@@ -65,8 +171,6 @@ $(document).ready(function(){
 <div class="search_area">
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" id="page" name="page" value="${page}"/>
-		<input type="hidden" id="searchGbn" name="searchGbn" value="${param.searchGbn}"/>
-		<input type="hidden" id="searchTxt" name="searchTxt" value="${param.searchTxt}"/>
 		<select id="searchGbn" name="searchGbn">
 			<option value="0">제목</option>
 			<option value="1">작성자</option>
@@ -108,8 +212,12 @@ $(document).ready(function(){
 		</tbody>
 	</table>
 </div>
-<div class="list_wrap">
-
-</div>
+<div class="paging_wrap">
+	<div page="1">처음</div>
+	<div page="1">이전</div>
+	<div page="1">1</div>
+	<div page="1">다음</div>
+	<div page="1">마지막</div>
+</div> 
 </body>
 </html>
