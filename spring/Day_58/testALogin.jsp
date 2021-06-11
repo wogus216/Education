@@ -29,6 +29,7 @@ $(document).ready(function(){
 				dataType: "json", // 받아 올 데이터 형식
 				data : params, // 보낼 데이터 (문자열 형태)
 				success : function(res) { //성공 시 다음 함수 실행
+					console.log(res);
 					
 				},
 				error: function(request, status, error){ //실패 시 다음 함수 실행
