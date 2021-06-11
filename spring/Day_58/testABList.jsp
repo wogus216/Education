@@ -89,6 +89,7 @@ $(document).ready(function(){
 		$("#page").val($(this).attr("page"));
 		reloadList();
 	});
+	
 }); //ready end
 
  
@@ -196,28 +197,9 @@ function drawPaging(pb){
 				<th>작성일</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td>aaa</td>
-				<td>aaa</td>
-				<td>aaa</td>
-				<td>aaa</td>
-			</tr>
-			<tr>
-				<td>aaa</td>
-				<td>aaa</td>
-				<td>aaa</td>
-				<td>aaa</td>
-			</tr>
-		</tbody>
+		<tbody></tbody>
 	</table>
 </div>
-<div class="paging_wrap">
-	<div page="1">처음</div>
-	<div page="1">이전</div>
-	<div page="1">1</div>
-	<div page="1">다음</div>
-	<div page="1">마지막</div>
-</div> 
+<div class="paging_wrap"></div> 
 </body>
 </html>
