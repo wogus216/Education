@@ -59,4 +59,5 @@
 * [교육55일(M테이블로 실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-55%EC%9D%BC%EC%B0%A8)
 * [교육56일(수정,상세보기 후 원래 돌아가기,로그인,로그아웃)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-56%EC%9D%BC%EC%B0%A8-9oagcn6l)
 * [교육57일(한줄 게시판(댓글)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-57%EC%9D%BC%EC%B0%A8)
+* [교육58일(비동기 방식게시판)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-58%EC%9D%BC%EC%B0%A8)
 
