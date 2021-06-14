@@ -31,6 +31,10 @@ public class TestAController {
 	
 	@Autowired
 	public IPagingService iPagingService;
+	
+	
+
+	
 
 	@RequestMapping(value="/testALogin")
 	public ModelAndView testALogin(ModelAndView mav) {
@@ -170,6 +174,39 @@ public class TestAController {
 		
 		
 		return mapper.writeValueAsString(modelMap);
+		
+	}
+	
+	//상세보기
+	@RequestMapping(value="/testAB")
+	public ModelAndView testAB(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable{
+		
+		HashMap<String, String> data = iTestService.getB(params);
+		
+		mav.addObject("data", data);
+		
+		mav.setViewName("testa/testAB");
+		
+		return mav;
+		
+		
+	}
+	
+	@RequestMapping(value="/testABUpate")
+	public ModelAndView testABUpate(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable{
+		
+		HashMap<String, String> data = iTestService.getB(params);
+		
+		mav.addObject("data", data);
+		
+		mav.setViewName("testa/testABUpate");
+		
+		return mav;
+		
 		
 	}
 	

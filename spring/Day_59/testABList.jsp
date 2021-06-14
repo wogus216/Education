@@ -92,8 +92,17 @@ $(document).ready(function(){
 	
 	$("#writeBtn").on("click",function(){
 		location.href= "testABWrite";
+		$("#actionForm").attr("action", "testABWrite");
+		$("#actionForm").submit();
 	});
 	
+	$(".list_wrap tbody").on("click", "tr", function(){
+		/* bno 속성 밑에 있는 속성명 */
+		$("#bNo").val($(this).attr("bno"));
+		
+		$("#actionForm").attr("action", "testAB");
+		$("#actionForm").submit();
+	});
 	
 	
 }); //ready end
@@ -132,7 +141,7 @@ function drawList(list){
 		html += "<td>" +  d.B_DT + "</td> ";
 		html += "</tr>";
 	}
-	
+	//비동기시 항상 고정으로 뜨는 친구에게 이벤트 걸어야한다 필수
 	$(".list_wrap tbody").html(html);
 }
 // 페이징 그리기
@@ -177,6 +186,7 @@ function drawPaging(pb){
 </c:choose>
 <div class="search_area">
 	<form action="#" id="actionForm" method="post">
+		<input type="hidden" id="bNo" name="bNo"/>
 		<input type="hidden" id="page" name="page" value="${page}"/>
 		<select id="searchGbn" name="searchGbn">
 			<option value="0">제목</option>
