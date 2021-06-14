@@ -26,7 +26,6 @@ $(document).ready(function(){
 			//form의 data를 문자열로 전환, 
 			//serialize: name이 있는 value 값만 가져옴
 			var params = $("#loginForm").serialize();
-		}
 		
 			//ajax
 			$.ajax({
@@ -50,9 +49,8 @@ $(document).ready(function(){
 				}
 			
 			});
+		}
 	});// loginBtn end
-			
-
 	
 });//ready end
 </script>	
