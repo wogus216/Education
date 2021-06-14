@@ -194,8 +194,8 @@ public class TestAController {
 		
 	}
 	
-	@RequestMapping(value="/testABUpate")
-	public ModelAndView testABUpate(
+	@RequestMapping(value="/testABUpdate")
+	public ModelAndView testABUpdate(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable{
 		
@@ -203,12 +203,70 @@ public class TestAController {
 		
 		mav.addObject("data", data);
 		
-		mav.setViewName("testa/testABUpate");
+		mav.setViewName("testa/testABUpdate");
 		
 		return mav;
 		
 		
 	}
 	
+	
+	@RequestMapping(value="/testABUpdates",
+			method = RequestMethod.POST,
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String testABUpdates(
+			@RequestParam HashMap<String, String> params) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		try {
+			int cnt = iTestService.updateB(params);
+			
+			if(cnt > 0) {
+				modelMap.put("msg", "success");
+				
+			} else {
+				modelMap.put("msg", "failed");
+			}
+			
+		} catch (Throwable e) {
+			e.printStackTrace();
+			modelMap.put("msg", "error");
+		}
+		
+		
+		return mapper.writeValueAsString(modelMap);
+		
+	}
+	
+	@RequestMapping(value="/testABDeletes",
+			method = RequestMethod.POST,
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String testABDeletes(
+			@RequestParam HashMap<String, String> params) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		try {
+			int cnt = iTestService.deleteB(params);
+			
+			if(cnt > 0) {
+				modelMap.put("msg", "success");
+				
+			} else {
+				modelMap.put("msg", "failed");
+			}
+			
+		} catch (Throwable e) {
+			e.printStackTrace();
+			modelMap.put("msg", "error");
+		}
+		
+		
+		return mapper.writeValueAsString(modelMap);
+		
+	}
 
 }

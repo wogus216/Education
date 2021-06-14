@@ -22,9 +22,31 @@ $(document).ready(function(){
 	
 	$("#deleteBtn").on("click", function(){
 		if(confirm("삭제하시겠습니까?")){
-		
-		}		
-	}); //deleteBtn
+			var params = $("#goForm").serialize();
+			
+			$.ajax({
+				url: "testABDeletes",
+				type: "post",
+				dataType: "json",
+				data: params,
+				success: function(res){
+					console.log(res)
+				
+					if(res.msg == "success"){
+						location.href="testABList"
+					} else if(res.msg == "failed" ){
+						alert("작성에 실패하였습니다.");
+					} else {
+						alert("수정중 에러가 발생하였습니다.");
+						
+					}
+				},
+				error: function(request, status, error){
+					console.log(error);
+					}
+				});
+			}
+		}); //deleteBtn
 }); //ready end
 </script>
 </head>
