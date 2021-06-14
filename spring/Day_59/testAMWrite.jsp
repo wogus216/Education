@@ -79,4 +79,4 @@ $(document).ready(function(){
 <input type="button" value="등록" id="addBtn"/>
 <input type="button" value="목록으로" id="listBtn"/>
 </body>
-</html>
+</html> 

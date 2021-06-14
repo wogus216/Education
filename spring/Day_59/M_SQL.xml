@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="M"><!-- namespace: 클래스명과동일 -->
+	<!-- id: 메소드명과 동일 -->
+	<!-- resultType: row 1줄의 형태를 지정 -->
+	<!-- 쿼리 작성 시 ; 이 들어가면 실행 되지 않음 -->
+	<select id="getMCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM M
+	WHERE 1 = 1
+	<if test="searchTxt != null and searchTxt != ''">
+		<choose>
+			<when test="searchGbn">
+				AND M_NO LIKE '%' || #{searchTxt} || '%'
+			</when>
+		</choose>
+	</if>
+	
+	</select>
+	
+	<select id="getMList" parameterType="hashmap" resultType="hashmap">
+		SELECT M_NO,M_ID,M_NM,M.BD,M.DT
+		FROM (SELECT M_NO,M_ID,M_NM,TO_CHAR(M_BIRTH,'YY-MM-DD') AS BD, TO_CHAR(M_JOINDT,'YY-MM-DD') AS DT,
+	             ROW_NUMBER() OVER(ORDER BY M_NO DESC) AS RNUM
+	        FROM M 
+	        WHERE 1 = 1
+	      	<if test="searchTxt != null and searchTxt != ''">
+	        	<choose>
+	        		<when test="searchGbn == 0">
+	        			AND M_NO LIKE '%' || #{searchTxt} || '%'
+	        		</when> 
+	        	</choose>
+	        	<choose>
+	        		<when test="searchGbn == 1">
+	        			AND M_ID LIKE '%' || #{searchTxt} || '%'
+	        		</when> 
+	        	</choose>
+	        	<choose>
+	        		<when test="searchGbn == 2">
+	        			AND M_NM LIKE '%' || #{searchTxt} || '%'
+	        		</when> 
+	        	</choose>
+	        	
+			</if>
+	        )M
+		WHERE M.RNUM BETWEEN #{startCnt} AND #{endCnt}  
+	</select>
+	
+	<select id="getM" parameterType="hashmap" resultType="hashmap">
+	SELECT M_NO,M_ID,M_PW,M_NM,TO_CHAR(M_BIRTH,'YY-MM-DD') AS BD, TO_CHAR(M_JOINDT,'YY-MM-DD') AS DT
+	FROM M
+	WHERE M_NO = #{mNo}
+	</select>
+	<select id="addM" parameterType="hashmap">
+	INSERT INTO M(M_NO, M_ID,M_PW, M_NM, M_BIRTH,M_JOINDT)
+	VALUES(M_SEQ.NEXTVAL, #{mId}, #{mPw},#{mNm}, #{mBr}, SYSDATE)
+	</select>
+	
+	<update id="updateM" parameterType="hashmap">
+	UPDATE M SET M_PW = #{mPw}, M_NM = #{mNm}
+	WHERE M_NO = #{mNo}
+	</update>
+	
+	<delete id="deleteM" parameterType="hashmap">
+	DELETE FROM M
+	WHERE M_NO = #{mNo}
+	</delete>
+</mapper>

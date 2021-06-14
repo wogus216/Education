@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>목록</title>
 <style type="text/css">
-
-
 .paging_wrap div{
 	display:inline-block;
 	padding: 5px;
@@ -26,6 +24,10 @@
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+	if("${param.searchGbn}" != ""){
+		$("#searchGbn").val("${param.searchGbn}");
+	}
+	
 	
 	reloadList();
 	
@@ -53,12 +55,22 @@ $(document).ready(function(){
 		$("#actionForm").attr("action","testAMWrite");
 		$("#actionForm").submit();
 	});
+	
+	$(".list_wrap tbody").on("click", "tr" ,function(){
+		$("#mNo").val($(this).attr("mno"));
+	
+		
+		$("#actionForm").attr("action","testAM");
+		$("#actionForm").submit();
+		
+	});  //list end
+	
+	
 }); //ready end
 
 //목록 소환
 function reloadList(){
 	var params = $("#actionForm").serialize();
-
 	//ajax
 	$.ajax({
 		url: "testAMLists",
@@ -74,10 +86,7 @@ function reloadList(){
 			console.log(error);
 		}
 	});
-
 }
-
-
 //목록 그리기
 function drawList(list){
 	var html= "";
@@ -87,7 +96,7 @@ function drawList(list){
 	html += "<td>" + d.M_NO +"</td>";
 	html += "<td>" + d.M_ID + "</td>";
 	html += "<td>" + d.M_NM + "</td>";
-	html +=  "<td>" + d.BIRTH + "</td>";
+	html +=  "<td>" + d.BD + "</td>";
 	html +=  "<td>" + d.DT + "</td>";
 	html +=  "</tr>";
 	}
@@ -173,4 +182,4 @@ function drawPaging(pb){
 </div>
 <div class="paging_wrap"></div>
 </body>
-</html>
+</html> 
