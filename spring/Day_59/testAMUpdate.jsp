@@ -29,7 +29,29 @@ $(document).ready(function(){
 			alert("생일을 입력해주세요");
 			$("#mBr").focus();
 		} else{
+			var params = $("#updateForm").serialize();
 			
+			$.ajax({
+				url: "testAMUpdates",
+				type: "post",
+				dataType: "json",
+				data: params,
+				success: function(res){
+					console.log(res)
+					
+					if(res.msg == "success"){
+						$("#updateForm").attr("action", "testAB");
+						$("#updateForm").submit();
+					} else if(res.msg == "failed" ){
+						alert("작성에 실패하였습니다.");
+					} else {
+						alert("수정중 에러가 발생하였습니다.");
+					}	
+				},
+					error: function(request, status, error){
+						console.log(error);
+				}
+			});
 		}
 	});
 	
@@ -44,8 +66,8 @@ $(document).ready(function(){
 <input type="hidden" name="mNo" value="${data.M_NO}"/>
 회원번호: ${data.M_NO} <br/>
 아이디: ${data.M_ID} <br/>
-이름<input type="text" id="mId" name="mId" value="${data.M_ID}"/><br/>
-생일<input type="date" id="mBr" name="mBr" value="${data.BD}"/><br/>
+이름<input type="text" id="mNm" name="mNm" value="${data.M_NM}"/><br/>
+생일<input type="date" id="mBd" name="mBd" value="${data.BD}"/><br/>
 가입일: ${data.DT}<br/>
 </form>
 <input type="button" value="수정" id="updateBtn"/> 

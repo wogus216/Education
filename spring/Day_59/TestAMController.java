@@ -201,8 +201,68 @@ public class TestAMController {
 			
 			mav.addObject("data", data);
 			System.out.println("data:"+data);
+			
 			mav.setViewName("testa/testAMUpdate");
 			
 			return mav;
 		}
+		
+		@RequestMapping(value="/testAMUpdates",
+				method = RequestMethod.POST,
+				produces = "text/json;charset=UTF-8")
+		@ResponseBody 
+		public String testAMUpdates(
+				@RequestParam HashMap<String, String> params) throws Throwable {
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+			try {
+				int cnt = iTestMService.updateM(params);
+				
+				if(cnt > 0) {
+					modelMap.put("msg", "success");
+					
+				} else {
+					modelMap.put("msg", "failed");
+				}
+				
+			} catch (Throwable e) {
+				e.printStackTrace();
+				modelMap.put("msg", "error");
+			}
+			
+			
+			return mapper.writeValueAsString(modelMap);
+			
+		}
+		
+		
+	@RequestMapping(value="/testAMDeletes",
+					method = RequestMethod.POST,
+					produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String testAMDeletes(
+			@RequestParam HashMap<String, String> params) throws Throwable {
+	ObjectMapper mapper = new ObjectMapper();
+	Map<String, Object> modelMap = new HashMap<String, Object>();
+	
+	try {
+		int cnt = iTestMService.deleteM(params);
+		
+		if(cnt > 0) {
+			modelMap.put("msg", "success");
+			
+		} else {
+			modelMap.put("msg", "failed");
+		}
+		
+	} catch (Throwable e) {
+		e.printStackTrace();
+		modelMap.put("msg", "error");
+	}
+	
+	
+	return mapper.writeValueAsString(modelMap);
+	
+}
 }

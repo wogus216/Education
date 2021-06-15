@@ -20,12 +20,40 @@ $(document).ready(function(){
 		$("#sendForm").submit();
 	}); //updateBtn end
 	
+	$("#deleteBtn").on("click", function(){
+		if(confirm("삭제하시겠습니까?")){
+			var params = $("#sendForm").serialize();
+			
+			$.ajax({
+				url: "testAMDeletes",
+				type: "post",
+				dataType: "json",
+				data: params,
+				success: function(res){
+					console.log(res)
+				
+					if(res.msg == "success"){
+						location.href="testAMList"
+					} else if(res.msg == "failed" ){
+						alert("작성에 실패하였습니다.");
+					} else {
+						alert("수정중 에러가 발생하였습니다.");
+						
+					}
+				},
+				error: function(request, status, error){
+					console.log(error);
+					}
+				});
+			}
+		}); //deleteBtn
+	
 }); //ready end
 </script>
 </head>
 <body>
 <form action="#" id="sendForm" method="post">
-	<input type="hidden" name="mNo" value="${d.M_NO}"/>
+	<input type="hidden" name="mNo" value="${data.M_NO}"/>
 	<input type="hidden" name="page" value="${param.page}"/>
 	<input type="hidden" name="searchGbn" value="${param.searchGbn}"/>
 	<input type="hidden" name="searchTxt" value="${param.searchTxt}"/>
