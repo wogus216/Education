@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="A"><!-- namespace: 클래스명과동일 -->
+	<select id="getM" parameterType="hashmap" resultType="hashmap">
+		SELECT M_NO, M_NM
+		FROM M
+		WHERE M_ID = #{mId}
+		AND M_PW = #{mPw}
+	</select>
+	<select id="getOBCnt" parameterType="hashmap" resultType="Integer">
+	SELECT COUNT(*) AS CNT
+	FROM OB O INNER JOIN M M
+                  ON O.M_NO = M.M_NO
+	WHERE OB_DEL = 1   
+		<if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searchGbn == 0">
+					AND M.M_NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1">
+					AND O.OB_CON LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="getOBList" parameterType="hashmap" resultType="hashmap">
+	SELECT B.OB_NO,B.M_NO,B.M_NM,B.OB_CON, B.OB_DT
+	FROM (SELECT O.OB_NO,M.M_NO,M.M_NM,O.OB_CON,TO_CHAR(O.OB_DT, 'YY-MM-DD') AS OB_DT,
+	                ROW_NUMBER() OVER(ORDER BY O.OB_NO ) AS RNUM
+	      FROM OB O INNER JOIN M M
+	                          ON O.M_NO = M.M_NO
+	      WHERE OB_DEL = 1  
+	      	<if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searchGbn == 0">
+					AND M.M_NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn == 1">
+					AND O.OB_CON LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	    ) B
+	WHERE B.RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
+	<insert id="writeOB" parameterType="hashmap" >
+		INSERT INTO OB(OB_NO,M_NO,OB_CON)
+		VALUES(OB_SEQ.NEXTVAL,#{mNo},#{obCon})
+	</insert>
+</mapper>
