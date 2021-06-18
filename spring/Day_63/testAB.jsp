@@ -68,10 +68,14 @@ $(document).ready(function(){
 ${data.B_CON}<br/>
 <c:if test="${!empty data.B_FILE}">
 <!-- set: 변수 -->
+<%-- 
 <c:set var="len" value="${fn:length(data.B_FILE)}"></c:set>
 첨부파일: <!-- a의 download : 해당 주소를 다운로드 하겠다. 값이 있는 경우 해당이름으로 다운 받겠다. --> 
 <a href="resources/upload/${data.B_FILE}" download="${fn:substring(data.B_FILE,20,len)}">
  ${fn:substring(data.B_FILE,20,len)}</a><br/>
+--%>
+첨부파일: <a href="resources/upload/${data.B_FILE}" download="${data.B_UFILE}">
+${data.B_UFILE}</a><br/>
 </c:if>
 <input type="button" value="수정" id="updateBtn"/>
 <input type="button" value="삭제" id="deleteBtn"/>

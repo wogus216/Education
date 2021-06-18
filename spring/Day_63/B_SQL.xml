@@ -49,7 +49,8 @@
 	
 	<!-- parameterType은 받는 값타입에 대한 것 resultType: 쿼리결과타입에 대한 것 -->
 	<select id="getB" parameterType="hashmap" resultType="hashmap">
-		SELECT B_NO, B_TITLE, B_WRITER, B_CON, TO_CHAR(B_DT, 'YYYY--MM--DD') AS B_DT,B_FILE
+		SELECT B_NO, B_TITLE, B_WRITER, B_CON, TO_CHAR(B_DT, 'YYYY--MM--DD') AS B_DT,
+			   B_FILE,SUBSTR(B_FILE, 21) AS B_UFILE
 		FROM B
 		WHERE B_NO = #{bNo}
 	</select>
@@ -60,7 +61,7 @@
 	</insert>
 	
 	<update id="updateB" parameterType="hashmap">
-		UPDATE B SET B_TITLE= #{bTitle}, B_CON = #{bCon}
+		UPDATE B SET B_TITLE= #{bTitle}, B_CON = #{bCon}, B_FILE = #{bFile}
 		WHERE B_NO = #{bNo}
 	</update>
 	
