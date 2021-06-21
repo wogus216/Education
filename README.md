@@ -69,3 +69,5 @@
 * [교육58일(비동기 방식게시판)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-58%EC%9D%BC%EC%B0%A8)
 * [교육59일(비동기 방식 실습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-59%EC%9D%BC%EC%B0%A8)
 * [교육60일(시험대비 연습)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-60%EC%9D%BC%EC%B0%A8)
+* [교육62 ~ 63일(파일업로드)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-63%EC%9D%BC%EC%B0%A8)
+* [교육65일(스케줄링)](https://velog.io/@wogus216/%EA%B5%90%EC%9C%A1-65%EC%9D%BC%EC%B0%A8)
